@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[就找茶]</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/配色.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.6.1.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <style>
+        .bg-cover {
+            /* 背景填滿 */
+            background-size: cover;
+            /* 以原圖中心為基準 */
+            background-position: center center;
+
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+
+<body>
+    <section class="bg-secondary">
+        <div class="container">
+            <div class="text-end">
+                <span class="text-warning fw-500" id="login_member" style="display: none;"></span>
+                <a href="#"><i class="fa-brands fa-square-facebook text-bg-primary"></i></a>
+                <a href="#"><i class="fa-brands fa-line text-bg-success"></i></a>
+                <a href="#"><i class="fa-brands fa-square-twitter text-bg-primary"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram text-bg-danger"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-dark text-nowrap">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                        <i class="fa-solid fa-house"></i>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">公司介紹</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#news">最新消息</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#order">菜單</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="Map.html">運動去</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex" role="search">
+                            <!--            <a href="Member_back.html" class="btn btn-success m-2 my-auto" id="mem_backend"
+                                style="display: none;" target="_blank">會員後台</a>
+                            <a href="product_backend.html" class="btn btn-success m-2 my-auto" id="p_backend"
+                                style="display: none;" target="_blank">產品後台</a>-->
+
+                            <!-- <button class="btn btn-outline-success me-2" type="button" id="">訂單明細</button> -->
+
+                            <button class="btn btn-outline-success me-2" type="button" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" id="s2_login_btn">登入</button>
+                            <button class="btn btn-success wow animate__animated animate__flash" type="button"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal2" data-wow-iteration="infinite"
+                                data-wow-duration="2s" id="s2_reg_btn">註冊</button>
+                            <a href="#" class="my-auto position-relative me-3" id="shop2" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal_50"><i
+                                    class="fa-solid fa-2x  fa-cart-shopping text-warning "></i><span
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                    id="shopmark2">0<span class="visually-hidden">unread messages</span></span></a>
+                            <a href="#" class="my-auto position-relative me-3" id="shop" style="display: none;"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal_50"><i
+                                    class="fa-solid fa-2x  fa-cart-shopping text-warning "></i><span
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                    id="shopmark">0<span class="visually-hidden">unread messages</span></span></a>
+                            <a href="_admin/index.html" class="btn btn-success m-2 my-auto" id="order_backend"
+                                style="display: none;" target="_blank">系統後台</a>
+                            <a href="_admin" class="btn btn-success m-2 my-auto" id="order_member"
+                                style="display: none;" target="_blank">訂單後台</a>
+                            <a href="" class="btn btn-success my-auto ms-2" id="logout" style="display: none;">登出</a>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">登入</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="" class="form-label">帳號</label>
+                    <input type="text" class="form-control" id="login_acc">
+                    <label for="" class="form-label">密碼</label>
+                    <input type="password" class="form-control" id="login_pwd">
+                </div>
+                <div class="modal-footer">
+                    <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal2" class="me-auto">
+                        沒有帳號 註冊去
+                    </a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="login_btn">確認</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">註冊</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6 d-flex flex-column">
+                            <div class="">
+                                <h3>會員規範</h3>
+                                <div>1.種種現實感到面前帶著一切億元電影本文抓住，出現眼前關心危險整合對手夫妻不行活力，一塊策略千萬，一旦。
+                                    這次到來想像手上貸款超市這段戰爭責任留下為何問題標誌一口，經常
+                                    品種，合同很有戀愛心情</div>
+                                <div>2.聯合既然再度彷彿下載一樣以下生存，空間只
+                                    能一段時間世</div>
+                                <div>3.紀一家創業首頁以便鬱悶安裝媽媽召開民國，教學看著
+                                    春節本帖雲林說著加入時間，多次日記塑膠聽到界面那樣警告商務，
+                                    負責人，大。</div>
+                            </div>
+                            <div class="mt-auto text-center">
+                                <input type="checkbox" id="reg_agree" name="reg_agree" value="我同意">
+                                <label for="reg_agree">我同意</label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="">
+                                <label for="reg_username" class="form-label">帳號</label>
+                                <input type="text" class="form-control" id="reg_username" placeholder="字數5~12">
+                                <div class="valid-feedback" id="reg_valid_feedback"></div>
+                                <div class="invalid-feedback" id="reg_invalid_feedback"></div>
+                            </div>
+
+                            <div class="">
+                                <label for="reg_password" class="form-label">密碼</label>
+                                <input type="password" class="form-control" id="reg_password" placeholder="字數8~12">
+                                <div id="err_reg_password" class="mt-1"></div>
+                                <div class="valid-feedback">字數符合</div>
+                                <div class="invalid-feedback">字數不符合</div>
+                            </div>
+
+                            <div class="">
+                                <label for="reg_check_password" class="form-label">確認密碼</label>
+                                <input type="password" class="form-control mb-2" id="reg_check_password">
+                                <div id="err_reg_check_password" class="mt-1"></div>
+                                <div class="valid-feedback">密碼符合</div>
+                                <div class="invalid-feedback">密碼不符合</div>
+                            </div>
+                            <label class="form-label">Email</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="reg_email" placeholder="字數10~20"
+                                    aria-describedby="reg_email" aria-label="">
+                                <span class="input-group-text" id="reg_email">@gmail.com</span>
+                                <div class="valid-feedback">字數符合</div>
+                                <div class="invalid-feedback">字數不符合</div>
+                            </div>
+                            <label for="" class="form-label">性別</label>
+                            <div class="">
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" id="reg_sex" name="reg_sex" class="form-check-input" value="男">
+                                    <label for="reg_sex" class="form-check-label">男</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" id="reg_sex" name="reg_sex" class="form-check-input" value="女">
+                                    <label for="reg_sex" class="form-check-label">女</label>
+                                </div>
+                            </div>
+                            <label for="" class="form-label">電話</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="tel">09</span>
+                                <input type="text" class="form-control" id="reg_tel" aria-describedby="tel"
+                                    aria-label="">
+                                <div class="valid-feedback">字數符合</div>
+                                <div class="invalid-feedback">字數不符合</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" class="">有帳號 登入去</a>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="reg_btn">確認</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <div class="row justify-content-center">
+            <div class="col-2 bg-cover wow animate__animated animate__fadeInDownBig" data-wow-duration="2s"
+                style="height: 300px;width: 200px;background-image: url(Photo/drinks\ \(1\).jpg);">
+            </div>
+            <div class="col-2 bg-cover mt-5 wow animate__animated animate__fadeInUpBig" data-wow-duration="2s"
+                style="height: 300px;width: 200px;background-image: url(Photo/drinks\ \(2\).jpg);">
+            </div>
+            <div class="col-2 bg-cover wow animate__animated animate__fadeInDownBig" data-wow-duration="2s"
+                style="height: 300px;width: 200px;background-image: url(Photo/drinks\ \(3\).jpg);">
+            </div>
+            <div class="col-2 bg-cover mt-5 wow animate__animated animate__fadeInUpBig" data-wow-duration="2s"
+                style="height: 300px;width: 200px;background-image: url(Photo/drinks\ \(4\).jpg);">
+            </div>
+        </div>
+    </section>
+
+    <section id="news">
+        <div class="row mt-2 justify-content-center">
+            <div class="col-9 overflow-auto wow animate__animated animate__fadeInLeft" data-wow-duration="2s"
+                style="height: 50vh;background-color: var(--color17);">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <td>112-1-31</td>
+                            <td>而在承擔，形成春天是從感受，加速一家男。</td>
+                        </tr>
+                        <tr>
+                            <td>112-2-1</td>
+                            <td>而在承擔，形成春天是從感受，加速一家男。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="m-2" id="order">
+        <div class="row wow animate__animated animate__fadeInRightBig" data-wow-duration="2s" id="show">
+            <div class="col-3">
+                <ul class="list-group" id="sec_1">
+                </ul>
+            </div>
+            <div class="col-3">
+                <ul class="list-group" id="sec_2">
+                </ul>
+            </div>
+            <div class="col-3">
+                <ul class="list-group" id="sec_3">
+                </ul>
+            </div>
+            <div class="col-3">
+                <div class="row h-100">
+                    <div class="h-50 mb-2">
+                        <ul class="list-group" id="sec_4">
+                        </ul>
+                    </div>
+                    <div class="h-50">
+                        <ul class="list-group" id="sec_5">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="../Photo/menu2.jpg" alt="" class="img-fluid">
+
+        <div class="modal fade" id="exampleModal_10" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModal_10_Label"></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-6" id="p_img">
+                                <img src="https://fakeimg.pl/300x200/200" alt="" class="img-fluid">
+                            </div>
+                            <div class="col-6" id="p_info"></div>
+                        </div>
+                        <div for="" class="mt-3 d-inline">單價:<span id="p_price_text"></span></div>
+                        <div for="" class="mt-3 ms-2 d-inline">紅利:<span id="p_points_text"></span></div>
+                        <label for="" class="mt-2 form-range">請選擇杯數:<span id="p_num_text"></span>
+                        </label>
+                        <input type="range" id="p_num" class="mt-2 form-range" min="1" max="20" value="1">
+                        <div class="mt-2">
+                            <div class="">尺寸</div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" id="p_size" name="size" class="form-check-input" value="M">
+                                <label for="" class="form-check-label">M</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" id="p_size" name="size" class="form-check-input" value="L">
+                                <label for="" class="form-check-label">L</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" id="p_size" name="size" class="form-check-input" value="XL">
+                                <label for="" class="form-check-label">XL</label>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <div class="">甜度</div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" id="p_sugar" name="sugar" class="form-check-input" value="無糖">
+                                <label for="" class="form-check-label">無糖</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" id="p_sugar" name="sugar" class="form-check-input" value="微糖">
+                                <label for="" class="form-check-label">微糖</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" id="p_sugar" name="sugar" class="form-check-input" value="半糖">
+                                <label for="" class="form-check-label">半糖</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" id="p_sugar" name="sugar" class="form-check-input" value="少糖">
+                                <label for="" class="form-check-label">少糖</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" id="p_sugar" name="sugar" class="form-check-input" value="全糖">
+                                <label for="" class="form-check-label">全糖</label>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <div class="">冰量</div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" id="p_ice" name="ice" class="form-check-input" value="去冰">
+                                <label for="" class="form-check-label">去冰</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" id="p_ice" name="ice" class="form-check-input" value="微冰">
+                                <label for="" class="form-check-label">微冰</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" id="p_ice" name="ice" class="form-check-input" value="少冰">
+                                <label for="" class="form-check-label">少冰</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" id="p_ice" name="ice" class="form-check-input" value="正常">
+                                <label for="" class="form-check-label">正常</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" id="p_ice" name="ice" class="form-check-input" value="溫">
+                                <label for="" class="form-check-label">溫</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" id="p_ice" name="ice" class="form-check-input" value="熱">
+                                <label for="" class="form-check-label">熱</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                            id="order_btn">加入訂單</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal_20" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" data-bs-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="exampleModalLabel">已送出訂單</h1>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center mb-3">
+                            <button class="btn btn-primary" id="" data-bs-dismiss="modal">確認</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal_30" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" data-bs-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="exampleModalLabel">喔哦~您是不是忘記了什麼?</h1>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="text-center mb-3">
+                        <button class="btn btn-primary" id="" data-bs-dismiss="modal">確認</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal_40" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="id">產品編號</label>
+                        <input type="text" id="id" name="" class="form-control mb-2" placeholder="" disabled>
+                        <div id="err_pname"></div>
+
+                        <label for="u_p_name">名稱</label>
+                        <input type="text" id="u_p_name" name="" class="form-control mb-2" placeholder="">
+                        <div id="err_p_name"></div>
+
+                        <label for="u_p_img">產品圖片</label>
+                        <input type="text" id="u_p_img" name="" class="form-control mb-2" placeholder="">
+                        <div id="err_p_img"></div>
+
+                        <label for="u_p_info">產品介紹</label>
+                        <input type="text" id="u_p_info" name="" class="form-control mb-2">
+                        <div id="err_p_info"></div>
+
+                        <label for="u_p_price">單價</label>
+                        <input type="text" id="u_p_price" name="" class="form-control mb-2" placeholder="請輸入數字">
+                        <div id="err_p_price"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="m_btn">確定</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal_50" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="">小計</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>品名</th>
+                                    <th>尺寸</th>
+                                    <th>甜度</th>
+                                    <th>冰量</th>
+                                    <th>杯數</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="detailList">
+                                <!-- ... -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="orderSure_btn"
+                            data-bs-dismiss="modal">送出</button>
+                        <button type="button" class="btn btn-light" id="" data-bs-dismiss="modal">繼續加點</button>
+                        <button type="button" class="btn btn-danger" id="deleteAlldetailList">清空</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        var reg_username;
+        var reg_password;
+        var reg_check_password;
+        var reg_email;
+        var reg_sex;
+        var reg_tel;
+
+        var reg_check_agree = false;
+        var flag_reg_username = false;
+        var flag_reg_password = false;
+        var flag_reg_check_password = false;
+        var flag_reg_email = false;
+        var flag_reg_tel = false;
+
+        var sec_1 = 10;
+        var sec_2 = 5;
+        var sec_3 = 8;
+        var sec_4 = 4;
+        var sec_5 = 4;
+
+
+        $(function () {
+            $.ajax({
+                type: "GET",
+                url: "product_R_api.php",
+                dataType: "json",
+                async: false,
+                success: showdata,
+                error: function () {
+                    console.log("error--product_R_api.php");
+                }
+
+            });
+
+            function showdata(data) {
+                for (var i = 0; i < data.data.length; i++) {
+                    var str = '';
+                    if (i <= sec_1 - 1) {
+                        var str = '<button data-name="' + data.data[i].Pname + '" data-img="' + data.data[i].Pdimg + '" data-price="' + data.data[i].Price + '" data-p_text="' + data.data[i].Information + '" data-points="' + data.data[i].Points + '" class="list-group-item list-group-item-warning" id="ordermodal">' + data.data[i].Pname + '</button><div class="text-center" id="show_btn"    style="display: none;"><button class=" btn badge text-bg-primary" id="update_btn" data-id="' + data.data[i].ID + '" data-p_name="' + data.data[i].Pname + '"  data-p_img="' + data.data[i].Pdimg + '"  data-p_info="' + data.data[i].Information + '" data-p_price="' + data.data[i].Price + '"><i class="fa-solid fa-pencil"></i></button></div>';
+                        $("#sec_1").append(str);
+                    }
+                    else if (i > sec_1 - 1 && i <= sec_1 + sec_2 - 1) {
+                        str = '<button data-name="' + data.data[i].Pname + '" data-img="' + data.data[i].Pdimg + '" data-price="' + data.data[i].Price + '" data-p_text="' + data.data[i].Information + '" data-points="' + data.data[i].Points + '" class="list-group-item list-group-item-danger" id="ordermodal">' + data.data[i].Pname + '</button><div class="text-center" id="show_btn" style="display: none;"><button class=" btn badge text-bg-primary" id="update_btn" data-id="' + data.data[i].ID + '" data-p_name="' + data.data[i].Pname + '"  data-p_img="' + data.data[i].Pdimg + '"  data-p_info="' + data.data[i].Information + '" data-p_price="' + data.data[i].Price + '"><i class="fa-solid fa-pencil"></i></button></div>';
+                        $("#sec_2").append(str);
+                    }
+                    else if (i > sec_1 + sec_2 - 1 && i <= sec_1 + sec_2 + sec_3 - 1) {
+                        str = '<button data-name="' + data.data[i].Pname + '" data-img="' + data.data[i].Pdimg + '" data-price="' + data.data[i].Price + '" data-p_text="' + data.data[i].Information + '" data-points="' + data.data[i].Points + '" class="list-group-item list-group-item-primary" id="ordermodal">' + data.data[i].Pname + '</button><div class="text-center" id="show_btn" style="display: none;"><button class=" btn badge text-bg-primary" id="update_btn" data-id="' + data.data[i].ID + '" data-p_name="' + data.data[i].Pname + '"  data-p_img="' + data.data[i].Pdimg + '"  data-p_info="' + data.data[i].Information + '" data-p_price="' + data.data[i].Price + '"><i class="fa-solid fa-pencil"></i></button></div>';
+                        $("#sec_3").append(str);
+                    }
+                    else if (i > sec_1 + sec_2 + sec_3 - 1 && i <= sec_1 + sec_2 + sec_3 + sec_4 - 1) {
+                        str = '<button data-name="' + data.data[i].Pname + '" data-img="' + data.data[i].Pdimg + '" data-price="' + data.data[i].Price + '" data-p_text="' + data.data[i].Information + '" data-points="' + data.data[i].Points + '" class="list-group-item list-group-item-info" id="ordermodal">' + data.data[i].Pname + '</button><div class="text-center" id="show_btn" style="display: none;"><button class=" btn badge text-bg-primary" id="update_btn" data-id="' + data.data[i].ID + '" data-p_name="' + data.data[i].Pname + '"  data-p_img="' + data.data[i].Pdimg + '"  data-p_info="' + data.data[i].Information + '" data-p_price="' + data.data[i].Price + '"><i class="fa-solid fa-pencil"></i></button></div>';
+                        $("#sec_4").append(str);
+                    } else if (i > sec_1 + sec_2 + sec_3 + sec_4 - 1 && i <= sec_1 + sec_2 + sec_3 + sec_4 + sec_5 - 1) {
+                        str = '<button data-name="' + data.data[i].Pname + '" data-img="' + data.data[i].Pdimg + '" data-price="' + data.data[i].Price + '" data-p_text="' + data.data[i].Information + '" data-points="' + data.data[i].Points + '" class="list-group-item list-group-item-info" id="ordermodal">' + data.data[i].Pname + '</button><div class="text-center" id="show_btn" style="display: none;"><button class=" btn badge text-bg-primary" id="update_btn" data-id="' + data.data[i].ID + '" data-p_name="' + data.data[i].Pname + '"  data-p_img="' + data.data[i].Pdimg + '"  data-p_info="' + data.data[i].Information + '" data-p_price="' + data.data[i].Price + '"><i class="fa-solid fa-pencil"></i></button></div>';
+                        $("#sec_5").append(str);
+                    }
+                }
+            }
+
+            var p_num = 1;
+            var p_name;
+            var p_price;
+            var p_totalPrice;
+            var p_sugar;
+            var p_ice;
+            var p_size;
+            var id;
+            var memberId = 0;
+            var detailList = [];
+
+            if (getCookie("UID01") != "" && getCookie("UID02") != "" && getCookie("UID03") != "") {
+                var uid01 = getCookie("UID01");
+                var uid02 = getCookie("UID02");
+                var uid03 = getCookie("UID03");
+
+                var jsonData = {};
+                jsonData.uid01 = getCookie("UID01");
+                jsonData.uid02 = getCookie("UID02");
+                jsonData.uid03 = getCookie("UID03");
+
+                $.ajax({
+                    type: "POST",
+                    // url: "Member_uid_check_api.php",
+                    url: "CRUD_HW/Member_UID_api.php",
+                    dataType: "json",
+                    data: JSON.stringify(jsonData),
+                    async: false,
+                    success: uid_check,
+                    error: function () {
+                        console.log("error-Member_uid_check_api.php");
+                    }
+                });
+                function uid_check(data) {
+                    if (data.state) {
+                        memberId = data.data[0].ID;
+                        $("#login_member").text(data.data[0].Username + "會員您好!");
+                        $("#login_member").show();
+                        $("#logout").show();
+                        $("#shop").show();
+                        $("#shop2").hide();
+                        $("#s2_login_btn").hide();
+                        $("#s2_reg_btn").hide();
+                        $("#order_member").show();
+                        if (data.data[0].Userstate == "y" && data.data[0].Usertype == 100) {
+                            $("#order_member").hide();
+                            $("#p_backend").show();
+                            $("#order_backend").show();
+                            $("#mem_backend").show();
+                            $(" #show_btn").show();
+                        }
+                    }
+                    else {
+                        alert(data.message);
+                    }
+                }
+            }
+
+            $("#logout").bind("click", function () {
+                setCookie("UID01", "", 7);
+                setCookie("UID02", "", 7);
+                setCookie("UID03", "", 7);
+
+                location.href = "index.html";
+            });
+
+            $("#reg_agree").bind("input propertychange", function () {
+                var result = [];
+                $.each($("input[name='reg_agree']:checked"), function () {
+                    result.push($(this).val());
+                });
+                if (result.length == 1) {
+                    reg_check_agree = true;
+                }
+                else {
+                    reg_check_agree = false;
+                }
+            });
+
+            $("#reg_username").bind("input propertychange", function () {
+                reg_username = $(this).val();
+                if (reg_username.length < 5 || reg_username.length > 12) {
+                    $("#reg_invalid_feedback").text("字數不符合");
+                    $("#reg_username").removeClass("is-valid");
+                    $("#reg_username").addClass("is-invalid")
+                    flag_reg_username = false;
+                }
+                else {
+                    $("#reg_valid_feedback").text("字數符合");
+                    $("#reg_username").removeClass("is-invalid");
+                    $("#reg_username").addClass("is-valid")
+                    flag_reg_username = true;
+
+                    var jsonData = {};
+                    jsonData.Username = reg_username;
+                    $.ajax({
+                        type: "POST",
+                        url: "CRUD_HW/Member_reg_check_api.php",
+                        data: JSON.stringify(jsonData),
+                        async: false,
+                        dataType: "json",
+                        success: check_acc,
+                        error: function () {
+                            console.log("error-Member_check_acc_api.php");
+                        }
+                    });
+                    function check_acc(data) {
+                        if (data.state) {
+                            $("#reg_valid_feedback").text("帳號可使用");
+                            $("#reg_username").removeClass("is-invalid");
+                            $("#reg_username").addClass("is-valid")
+                            flag_reg_username = true;
+                        }
+                        else {
+                            $("#reg_invalid_feedback").text("帳號已存在，不可註冊");
+                            $("#reg_username").removeClass("is-valid");
+                            $("#reg_username").addClass("is-invalid")
+                            flag_reg_username = false;
+                        }
+                    }
+                }
+
+            });
+
+            $("#reg_password").bind("input propertychange", function () {
+                reg_password = $(this).val();
+                if (reg_password.length < 8 || reg_password.length > 12) {
+                    $("#reg_password").removeClass("is-valid");
+                    $("#reg_password").addClass("is-invalid")
+                    flag_reg_password = false;
+                }
+                else {
+
+                    $("#reg_password").removeClass("is-invalid");
+                    $("#reg_password").addClass("is-valid")
+                    flag_reg_password = true;
+                    if (reg_check_password != reg_password) {
+                        $("#reg_check_password").removeClass("is-valid");
+                        $("#reg_check_password").addClass("is-invalid")
+                        flag_reg_check_password = false;
+                    }
+                    else {
+                        $("#reg_check_password").removeClass("is-invalid");
+                        $("#reg_check_password").addClass("is-valid")
+                        flag_reg_check_password = true;
+                    }
+                }
+            });
+
+            $("#reg_check_password").bind("input propertychange", function () {
+                reg_check_password = $(this).val();
+                if (reg_check_password != reg_password) {
+                    $("#reg_check_password").removeClass("is-valid");
+                    $("#reg_check_password").addClass("is-invalid")
+                    flag_reg_check_password = false;
+                }
+                else {
+                    $("#reg_check_password").removeClass("is-invalid");
+                    $("#reg_check_password").addClass("is-valid")
+                    flag_reg_check_password = true;
+                }
+            });
+
+            $("#reg_email").bind("input propertychange", function () {
+                reg_email = $(this).val() + "@gmail.com";
+                if (reg_email.length < 10 || reg_email.length > 20) {
+                    $("#reg_email").removeClass("is-valid");
+                    $("#reg_email").addClass("is-invalid")
+                    flag_reg_email = false;
+                }
+                else {
+                    $("#reg_email").removeClass("is-invalid");
+                    $("#reg_email").addClass("is-valid")
+                    flag_reg_email = true;
+                }
+            });
+
+            $(" #reg_sex").bind("click", function () {
+                reg_sex = $(this).val();
+            });
+
+            $("#reg_tel").bind("input propertychange", function () {
+                reg_tel = "09" + $(this).val();
+                if (reg_tel.length < 8 || reg_tel.length > 10) {
+                    $("#reg_tel").removeClass("is-valid");
+                    $("#reg_tel").addClass("is-invalid")
+                    flag_reg_tel = false;
+                }
+                else {
+                    $("#reg_tel").removeClass("is-invalid");
+                    $("#reg_tel").addClass("is-valid")
+                    flag_reg_tel = true;
+                }
+            });
+
+            $("#reg_btn").bind("click", function () {
+                if (reg_check_agree) {
+                    if (flag_reg_username && flag_reg_password && flag_reg_check_password && flag_reg_email && reg_sex != null && flag_reg_tel) {
+                        var jsonData = {};
+                        jsonData["Username"] = reg_username;
+                        jsonData["Pwd"] = reg_password;
+                        jsonData["Sex"] = reg_sex;
+                        jsonData["Tel"] = reg_tel;
+
+                        // console.log(JSON.stringify(jsonData));
+                        $.ajax({
+                            type: "POST",
+                            url: "CRUD_HW/Member_reg_api.php",
+                            data: JSON.stringify(jsonData),
+                            async: false,
+                            dataType: "json",
+                            success: creat,
+                            error: function () {
+                                console.log("error-CRUD_HW/Member_reg_api.php");
+                            }
+                        });
+
+                        function creat(data) {
+                            if (data.state) {
+                                alert(data.message);
+                                location.href = "index.html";
+                            }
+                            else {
+                                alert(data.message);
+                            }
+                        }
+
+                    }
+                    else {
+                        alert("請確認欄位無誤");
+                    }
+                }
+                else {
+                    alert("請同意會員規範");
+                }
+            });
+
+            $("#login_btn").bind("click", function () {
+
+                var jsonData = {};
+                jsonData.Username = $("#login_acc").val();
+                jsonData.Pwd = $("#login_pwd").val();
+                $.ajax({
+                    type: "POST",
+                    url: "CRUD_HW/Member_login_api.php",
+                    data: JSON.stringify(jsonData),
+                    async: false,
+                    dataType: "json",
+                    success: login,
+                    error: function () {
+                        console.log("error-Member_check_login_api.php");
+                    }
+                });
+                function login(data) {
+                    if (data.state) {
+                        location.href = 'index.html';
+                        memberId = data.data[0].ID;
+                        $("#s2_login_btn").hide();
+                        $("#s2_reg_btn").hide();
+                        $("#shop").show();
+                        $("#shop2").hide();
+                        $("#logout").show();
+                        $("#login_member").text(data.data[0].Username + "會員您好");
+                        $("#login_member").show();
+                        $("#order_member").show();
+                        setCookie("UID01", data.data[0].UID01, 7);
+                        setCookie("UID02", data.data[0].UID02, 7);
+                        setCookie("UID03", data.data[0].UID03, 7);
+                        // console.log(data);
+                        if (data.data[0].Userstate == "y" && data.data[0].Usertype == 100) {
+                            location.href = 'index.html';
+                            $("#order_member").hide();
+                            $("#p_backend").show();
+                            $("#order_backend").show();
+                            $("#mem_backend").show();
+                            $(" #show_btn").show();
+
+                        }
+                        else if (data.data[0].Userstate != "y") {
+                            alert("帳號停權中");
+                        }
+                    }
+                    else {
+                        alert(data.message);
+                    }
+                }
+            });
+
+            $(" #ordermodal").bind("click", function () {
+                p_name = $(this).data("name");
+                p_price = $(this).data("price");
+                $("#exampleModal_10_Label").text(p_name);
+                $("#p_num_text").html(p_num);
+                $("#p_points_text").html($(this).data("points"));
+                $("#p_img").html('<img src="' + $(this).data("img") + '" alt="" class="img-fluid">');
+                $("#p_info").text($(this).data("p_text"));
+                $("#p_price_text").html("$" + p_price);
+                $("#exampleModal_10").modal("show");
+                $("#p_num").bind("input propertychange", function () {
+                    p_num = $(this).val();
+                    $("#p_num_text").html(p_num);
+                });
+
+                $(" #p_size").bind("input propertychange", function () {
+                    $.each($("input[name='size']:checked"), function () {
+                        p_size = $(this).val();
+                    });
+                });
+
+                $(" #p_sugar").bind("input propertychange", function () {
+                    $.each($("input[name='sugar']:checked"), function () {
+                        p_sugar = $(this).val();
+                    });
+                });
+
+                $(" #p_ice").bind("input propertychange", function () {
+                    $.each($("input[name='ice']:checked"), function () {
+                        p_ice = $(this).val();
+                    });
+                });
+            });
+
+            $("#order_btn").bind("click", function () {
+                if (p_sugar != null && p_ice != null && p_size != null) {
+
+                    $("#detailList").empty();
+                    var jsonData = {};
+                    jsonData.Pname = p_name;
+                    jsonData.Price = p_price;
+                    jsonData.Account = p_num * p_price;
+                    jsonData.Pnum = p_num;
+                    jsonData.Sweet = p_sugar;
+                    jsonData.Temp = p_ice;
+                    jsonData.Capacity = p_size;
+                    jsonData.UserId = memberId;
+                    jsonData.Orderno = new Date().getTime();
+                    detailList.push(jsonData);
+
+                    for (var i = 0; i < detailList.length; i++) {
+
+                        $("#detailList").append('<tr><td>' + detailList[i].Pname + '</td><td>' + detailList[i].Capacity + '</td><td>' + detailList[i].Sweet + '</td><td>' + detailList[i].Temp + '</td><td>' + detailList[i].Pnum + '</td><td><i data-tempid="' + detailList[i].tempID + '" class="btn fa-solid fa-xmark text-danger" id="detail_close"></i></td></tr>');
+
+                    }
+                    // $("#exampleModal_50").modal("show");
+                    $("#shopmark").text(detailList.length);
+                    $("#shopmark2").text(detailList.length);
+
+                }
+                else {
+                    $("#exampleModal_30").modal("show");
+                }
+
+                $(" #detail_close").bind("click", function () {
+
+                    var tempid = $(this).data("tempid")
+                    for (var i = 0; i < detailList.length; i++) {
+                        if (detailList[i].tempID == tempid) {
+                            detailList.splice(i, 1);
+                        }
+                    }
+                    $("#detailList").empty();
+                    for (var i = 0; i < detailList.length; i++) {
+
+                        $("#detailList").append('<tr><td>' + detailList[i].Pname + '</td><td>' + detailList[i].Capacity + '</td><td>' + detailList[i].Sweet + '</td><td>' + detailList[i].Temp + '</td><td>' + detailList[i].Pnum + '</td><td><i data-tempid="' + detailList[i].tempID + '" class="btn fa-solid fa-xmark text-danger" id="detail_close"></i></td></tr>');
+
+                    }
+                });
+            });
+
+            $("#deleteAlldetailList").bind("click", function () {
+                $("#detailList").empty();
+                detailList = [];
+                $("#shopmark").text("0");
+                $("#shopmark2").text("0");
+            });
+
+            $("#orderSure_btn").bind("click", function () {
+                if (detailList.length > 0) {
+                    // console.log(JSON.stringify(detailList[0]));
+
+                    for (var i = 0; i < detailList.length; i++) {
+
+                        $.ajax({
+                            type: "POST",
+                            url: "OrderSub_C_api.php",
+                            data: JSON.stringify(detailList[i]),
+                            dataType: "json",
+                            async: false,
+                            success: orderSub_C,
+                            error: function () {
+                                console.log("error-OrderSub_C_api.php");
+                            }
+                        });
+                        function orderSub_C(data) {
+                            if (data.state) {
+                                alert(data.message);
+
+                                //{"ID":"18"}
+                                var jsonData = {};
+                                jsonData["userID"] = memberId;
+                                console.log(JSON.stringify(jsonData));
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: "CRUD_HW/OrderOrderSub_R_api.php",
+                                    data: JSON.stringify(jsonData),
+                                    dataType: "json",
+                                    success: function showdata_reg_check_one(data) {
+                                        if (data.state) {
+                                            alert(data.message);
+                                            location.href = "_admin/memoder.html";
+                                        } else {
+                                            alert(data.message);
+                                        }
+                                    },
+                                    error: function () {
+                                        alert("error-CRUD_HW/OrderOrderSub_R_api.php");
+                                    }
+                                });
+                            } else {
+                                alert(data.message);
+                            }
+                        }
+                    }
+                    $("#detailList").empty();
+                    detailList = [];
+                    $("#shopmark").text("0");
+                    $("#shopmark2").text("0");
+                    // $("#exampleModal_20").modal("show");
+
+                    // location.href = "_admin/memoder.html";
+                }
+                else {
+                    alert("你還未加入訂單");
+                }
+
+            });
+
+            $(" #update_btn").bind("click", function () {
+
+                id = $(this).data("id");
+                var u_p_name = $(this).data("p_name");
+                var u_p_img = $(this).data("p_img");
+                var u_p_info = $(this).data("p_info");
+                var u_p_price = $(this).data("p_price");
+
+                $("#id").val(id);
+                $("#u_p_name").val(u_p_name);
+                $("#u_p_img").val(u_p_img);
+                $("#u_p_info").val(u_p_info);
+                $("#u_p_price").val(u_p_price);
+                $("#exampleModal_40").modal("show");
+            });
+
+            $(" #m_btn").bind("click", function () {
+                var jsonData = {};
+                jsonData.id = $("#id").val();
+                jsonData.pname = $("#u_p_name").val();
+                jsonData.pdimg = $("#u_p_img").val();
+                jsonData.information = $("#u_p_info").val();
+                jsonData.price = $("#u_p_price").val();
+                $.ajax({
+                    type: "POST",
+                    url: "product_U_api.php",
+                    data: JSON.stringify(jsonData),
+                    async: false,
+                    dataType: "json",
+                    success: update,
+                    error: function () {
+                        console.log("error-product_U_api.php");
+                    }
+                });
+                function update(data) {
+                    if (data.state) {
+                        alert(data.message);
+                        location.href = "index.html";
+                    }
+                    else {
+                        alert(data.message);
+                    }
+                }
+
+            });
+
+
+
+
+
+        });
+
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+    </script>
+
+</body>
+
+</html>

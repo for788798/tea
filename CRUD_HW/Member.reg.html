@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>註冊</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-expand-lg bg-light">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">首頁</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#">訂購</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">購物車</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">訂單</a>
+                                </li>
+                            </ul>
+                            <!-- <div class="mx-auto fs-1 ">線上訂購</div> -->
+                            <span class="text-danger fw-900 fs-3 me-2" id="login_member"></span>
+                            <a href="Member.login.html" class="btn ms-auto" id="login_btn">登入</a>
+                            <!-- <a href="Member.reg.html" class="btn" id="reg_btn">註冊</a>
+                            <button class="btn" id="logout_btn" style="display: none;">登出</button> -->
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-8 offset-2">
+                <div class="card">
+                    <h5 class="card-header text-center">會員註冊</h5>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="fs-2 text-center">會員遵循事項</div>
+                                <div class="fs-5">1.一套工資春天準確執法基金另一個不詳，我覺得遇到以及違反自然本公司，空中大眾同一決策容量暫無頻率，體。</div>
+                                <div class="fs-5">2.不明白第二，允許戀愛獎勵晚上蔬菜，享受現實寫真，明顯一面動態整體網遊，道德長大去了企業開展，東京警。</div>
+                                <div class="fs-5">3.很多人制定指南當天，以上也能年輕人之外，擴大級別謝謝管理工具你怎麼，進攻感到有限責任公司接下來，開。</div>
+                                <div class="form-check text-center">
+                                    <input type="checkbox" id="mem_check01" name="mem_check01">
+                                    <label for="mem_check01" class="form-check-label center">同意</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="row align-items-center mb-1">
+                                    <div class="mb-3">
+                                        <label for="registerusername" class="form-label">帳號</label>
+                                        <input type="text" name="registerusername" id="registerusername"
+                                            class="form-control" placeholder="帳號6~20字">
+                                        <div class="form-text" id="err_registerusername"></div>
+                                        <div class="valid-feedback" id="reg_valid-feedback">輸入正確</div>
+                                        <div class="invalid-feedback" id="reg_invalid-feedback">輸入錯誤</div>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center mt-1">
+                                    <div class="mb-3">
+                                        <label for="registerpassword" class="form-label">密碼</label>
+                                        <input type="password" name="registerpassword" id="registerpassword"
+                                            class="form-control" placeholder="密碼6~20字">
+                                        <div class="form-text" id="err_registerpassword"></div>
+                                        <div class="valid-feedback">輸入正確</div>
+                                        <div class="invalid-feedback">輸入錯誤</div>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center mt-1">
+                                    <div class="mb-3">
+                                        <label for="registercheckpassword" class="form-label">確認密碼</label>
+                                        <input type="password" name="registercheckpassword" id="registercheckpassword"
+                                            class="form-control" placeholder="密碼6~20字">
+                                        <div class="form-text" id="err_registercheckpassword"></div>
+                                        <div class="valid-feedback">輸入正確</div>
+                                        <div class="invalid-feedback">輸入錯誤</div>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center mt-1">
+                                    <div class="mb-3">
+                                        <label for="registeremail" class="form-label">電話</label>
+                                        <input type="tel" name="registertel" id="registertel" class="form-control">
+                                        <div class="form-text" id="err_registertel"></div>
+                                        <div class="valid-feedback">輸入正確</div>
+                                        <div class="invalid-feedback">輸入錯誤</div>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center mt-1">
+                                    <label for="sex" class="form-label">性別</label>
+                                    <div class="mb-3 d-flex flex-row">
+                                        <div class="form-check">
+                                            <input type="radio" id="sex01" name="radio_sex" class="form-check-label"
+                                                value="男">
+                                            <label for="sex01" class="form-check-label">男</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="radio" id="sex02" name="radio_sex" class="form-check-label"
+                                                value="女">
+                                            <label for="sex02" class="form-check-label">女</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex flex-row">
+                            <a href="Member.login.html" class="form-check me-auto ">登入會員!!</a>
+                            <button type="button" class="btn btn-primary" id="reg_btn">註冊</button>
+                            <button type="button" class="btn btn-secondary ms-3">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-3.6.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        var flag_check01 = false;
+        var flag_username = false;
+        var flag_password = false;
+        var flag_repassword = false;
+        var flag_tel = false;
+        $(function () {
+            //註冊即時監聽
+            $("#reg_btn").bind("click", function () {
+                // console.log("test");
+                // $.each($("input[name='mem_check']:checked"), function () { })
+                if (flag_check01) {
+                    if (flag_username && flag_password && flag_repassword && flag_tel) {
+                        //{"username":"owner", "password":"123456", "email":"xxx@ccc.xom"}
+                        //mem_reg_api.php
+
+                        var jsonData = {};
+                        jsonData["Username"] = $("#registerusername").val();
+                        jsonData["Pwd"] = $("#registerpassword").val();
+                        jsonData["Tel"] = $("#registertel").val();
+                        jsonData["Sex"] = $("input[name='radio_sex']:checked").val();
+                        console.log(JSON.stringify(jsonData));
+                        $.ajax({
+                            type: "POST",
+                            url: "Member_reg_api.php",
+                            data: JSON.stringify(jsonData),
+                            dataType: "json",
+                            success: reg_showdata,
+                            error: function () {
+                                alert("error-mem_reg_api.php");
+                            }
+                        })
+                    } else {
+                        alert("欄位輸入不符規定, 請修正!");
+                    }
+                } else {
+                    alert("請遵守會員守則!");
+                }
+
+            })
+            //會員守則即時監聽
+            $("#mem_check01").bind("click", function () {
+                var check01 = [];
+                $.each($("input[name='mem_check01']:checked"), function () {
+                    check01.push($(this).val());
+                });
+                console.log(check01);
+                if (check01.length == 1) {
+                    console.log("遵守");
+                    flag_check01 = true;
+                } else {
+                    console.log("不遵守!");
+                    flag_check01 = false;
+                }
+            })
+            //註冊帳號即時間聽
+            $("#registerusername").bind("input propertychange", function () {
+                if ($(this).val().length > 5 && $(this).val().length < 21) {
+                    //符合規則
+                    // $("#err_registerusername").html("帳號符合規則");
+                    // $("#err_registerusername").css("color", "green");
+                    var jsonData = {};
+                    jsonData["Username"] = $(this).val();
+                    console.log(JSON.stringify(jsonData));
+                    $.ajax({
+                        type: "POST",
+                        url: "Member_reg_check_api.php",
+                        data: JSON.stringify(jsonData),
+                        dataType: "json",
+                        success: check_one_showdata,
+                        error: function () {
+                            alert("error_Member_reg_check_api.php");
+                        }
+                    })
+
+                    flag_username = true;
+                    $("#reg_valid-feedback").text("帳號輸入正確");
+                    $("#registerusername").removeClass("is-invalid");
+                    $("#registerusername").addClass("is-valid");
+                } else {
+                    //不符合規則
+                    // $("#err_registerusername").html("帳號不符合規則!");
+                    // $("#err_registerusername").css("color", "red");
+                    flag_username = false;
+                    $("#reg_invalid-feedback").text("帳號輸入錯誤");
+                    $("#registerusername").removeClass("is-valid");
+                    $("#registerusername").addClass("is-invalid");
+                }
+            })
+            //註冊密碼即時監聽
+            $("#registerpassword").bind("input propertychange", function () {
+                if ($(this).val().length > 5 && $(this).val().length < 21) {
+                    //符合規則
+                    // $("#err_registerpassword").html("密碼符合規則");
+                    // $("#err_registerpassword").css("color", "green");
+                    flag_password = true;
+                    $("#registerpassword").removeClass("is-invalid");
+                    $("#registerpassword").addClass("is-valid");
+                } else {
+                    //不符合規則
+                    // $("#err_registerpassword").html("密碼不符合規則!");
+                    // $("#err_registerpassword").css("color", "red");
+                    flag_password = false;
+                    $("#registerpassword").removeClass("is-valid");
+                    $("#registerpassword").addClass("is-invalid");
+                }
+            })
+            //註冊確認密碼即時監聽
+            $("#registercheckpassword").bind("input propertychange", function () {
+                if ($(this).val() == $("#registerpassword").val()) {
+                    //符合規則
+                    // $("#err_registercheckpassword").html("確認密碼一致");
+                    // $("#err_registercheckpassword").css("color", "green");
+                    flag_repassword = true;
+                    $("#registercheckpassword").removeClass("is-invalid");
+                    $("#registercheckpassword").addClass("is-valid");
+
+                } else {
+                    //不符合規則
+                    // $("#err_registercheckpassword").html("密碼不一致");
+                    // $("#err_registercheckpassword").css("color", "red");
+                    flag_repassword = false;
+                    $("#registercheckpassword").removeClass("is-valid");
+                    $("#registercheckpassword").addClass("is-invalid");
+
+                }
+            })
+            //註冊信箱即時監聽
+            $("#registertel").bind("input propertychange", function () {
+                if ($(this).val().length == 10) {
+                    //符合規則
+                    // $("#err_registeremail").html("字數符合規則");
+                    // $("#err_registeremail").css("color", "green");
+                    flag_tel = true;
+                    $("#registertel").removeClass("is-invalid");
+                    $("#registertel").addClass("is-valid");
+
+                } else {
+                    //不符合規則
+                    // $("#err_registeremail").html("字數不符合規則");
+                    // $("#err_registeremail").css("color", "red");
+                    flag_tel = false;
+                    $("#registertel").removeClass("is-valid");
+                    $("#registertel").addClass("is-invalid");
+
+                }
+            })
+            //sex radio監聽
+            $("#sex").bind("click", function () {
+                $.each($("input[name='radio_sex']:checked"), function () {
+                    console.log($(this).val());
+                })
+            })
+        })
+
+        function reg_showdata(data) {
+            console.log(data);
+            if (data.state) {
+                alert(data.message);
+                location.href = "Member.login.html"
+            } else {
+                alert(data.message);
+            }
+        }
+        //檢查帳號是否重複
+        function check_one_showdata(data) {
+            console.log(data);
+            if (data.state) {
+                //該帳號不存在,帳號可以使用!
+                $("#reg_valid-feedback").text("該帳號不存在,帳號可以使用");
+                $("#registerusername").removeClass("is-invalid");
+                $("#registerusername").addClass("is-valid");
+                flag_username = true;
+            } else {
+                //該帳號存在,帳號不可以使用!
+                $("#reg_invalid-feedback").text("該帳號存在,帳號不可以使用");
+                $("#registerusername").removeClass("is-valid");
+                $("#registerusername").addClass("is-invalid");
+                flag_username = false;
+            }
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

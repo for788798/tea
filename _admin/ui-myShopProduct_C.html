@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<!-- 網站描述 jccFix 可刪-->
+	<meta name="author" content="AdminKit"> <!-- 作者 jccFix 可刪-->
+	<meta name="keywords"
+		content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+	<!-- 關鍵字 jccFix 上架前必須修改-->
+
+	<link href="../css/app.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+
+	<link rel="stylesheet" href="../css/all.min.css"> <!-- Font Awesome icon CSS 使用 jcc add-->
+	<title>[就找茶]飲料產品檔 新增作業</title>
+	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  左側 Menu  起始 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+		<nav id="sidebar" class="sidebar js-sidebar">
+			<div class="sidebar-content js-simplebar">
+				<a class="sidebar-brand" href="../index.html">
+					<span class="align-middle fs-2">
+						<i class="fa-solid fa-leaf text-success"></i>&nbsp&nbsp&nbsp&nbsp就找茶&nbsp&nbsp
+						<i class="fa-solid fa-leaf text-success"></i>
+					</span>
+				</a>
+
+				<ul class="sidebar-nav">
+
+					<div id="Rootmember" style="display: none;">
+						<li class="sidebar-header">
+							管理者資料管理
+						</li>
+						<li class="sidebar-item">
+							<a class="sidebar-link" href="index.html">
+								<i class="align-middle" data-feather="sliders"></i> <span
+									class="align-middle">系統資訊儀表板</span>
+							</a>
+						</li>
+					</div>
+
+					<li class="sidebar-header">
+						會員資料管理
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="member.html">
+							<i class="align-middle" data-feather="user"></i> <span class="align-middle">會員基本資料維護</span>
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="memoder.html">
+							<i class="align-middle" data-feather="user-plus"></i> <span
+								class="align-middle">會員訂單查詢</span>
+						</a>
+					</li>
+
+
+					<div id="Rootmember2" style="display: none;">
+						<li class="sidebar-header">
+							茶飲品資料管理
+						</li>
+						<li class="sidebar-item">
+							<a class="sidebar-link" href="ui-myShopProductCRUD.html">
+								<i class="fa-solid fa-mug-hot"></i> <span class="align-middle">茶飲產品資料維護</span>
+							</a>
+						</li>
+						<li class="sidebar-item">
+							<a class="sidebar-link" href="ui-myShopSpecialCRUD.html">
+								<i class="fa-solid fa-mug-saucer"></i></i> <span class="align-middle">茶飲產品分類檔維護</span>
+							</a>
+						</li>
+					</div>
+				</ul>
+
+				<div class="sidebar-cta">
+					<div class="sidebar-cta-content">
+						<strong class="d-inline-block mb-2">連鎖茶店系統</strong>
+						<div class="mb-3 text-sm">
+							你是否正在找 茶飲品訂購 管理系統 , [就找茶] 幫你一切搞定
+						</div>
+						<div class="d-grid">
+							<a href="index.html" class="btn btn-primary">測試版下載</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  左側 Menu 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+
+		<div class="main">
+			<nav class="navbar navbar-expand navbar-light navbar-bg">
+				<a class="sidebar-toggle js-sidebar-toggle">
+					<i class="hamburger align-self-center"></i>
+				</a>
+
+				<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  網站主頁右上角 1.提示 2.對話 3.下拉選單  起始 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+				<div class="navbar-collapse collapse">
+					<ul class="navbar-nav navbar-align">
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
+								<div class="position-relative">
+									<i class="align-middle" data-feather="bell"></i>
+									<span class="indicator">4</span>
+								</div>
+							</a>
+							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
+								aria-labelledby="alertsDropdown">
+								<div class="dropdown-menu-header">
+									4 New Notifications
+								</div>
+								<div class="list-group">
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<i class="text-danger" data-feather="alert-circle"></i>
+											</div>
+											<div class="col-10">
+												<div class="text-dark">Update completed</div>
+												<div class="text-muted small mt-1">Restart server 12 to complete the
+													update.</div>
+												<div class="text-muted small mt-1">30m ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<i class="text-warning" data-feather="bell"></i>
+											</div>
+											<div class="col-10">
+												<div class="text-dark">Lorem ipsum</div>
+												<div class="text-muted small mt-1">Aliquam ex eros, imperdiet vulputate
+													hendrerit et.</div>
+												<div class="text-muted small mt-1">2h ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<i class="text-primary" data-feather="home"></i>
+											</div>
+											<div class="col-10">
+												<div class="text-dark">Login from 192.186.1.8</div>
+												<div class="text-muted small mt-1">5h ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<i class="text-success" data-feather="user-plus"></i>
+											</div>
+											<div class="col-10">
+												<div class="text-dark">New connection</div>
+												<div class="text-muted small mt-1">Christina accepted your request.
+												</div>
+												<div class="text-muted small mt-1">14h ago</div>
+											</div>
+										</div>
+									</a>
+								</div>
+								<div class="dropdown-menu-footer">
+									<a href="#" class="text-muted">Show all notifications</a>
+								</div>
+							</div>
+						</li>
+
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown"
+								data-bs-toggle="dropdown">
+								<div class="position-relative">
+									<i class="align-middle" data-feather="message-square"></i>
+								</div>
+							</a>
+							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
+								aria-labelledby="messagesDropdown">
+								<div class="dropdown-menu-header">
+									<div class="position-relative">
+										4 New Messages
+									</div>
+								</div>
+								<div class="list-group">
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="../img/avatars/avatar-5.jpg"
+													class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">Vanessa Tucker</div>
+												<div class="text-muted small mt-1">Nam pretium turpis et arcu. Duis arcu
+													tortor.</div>
+												<div class="text-muted small mt-1">15m ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="../img/avatars/avatar-2.jpg"
+													class="avatar img-fluid rounded-circle" alt="William Harris">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">William Harris</div>
+												<div class="text-muted small mt-1">Curabitur ligula sapien euismod
+													vitae.</div>
+												<div class="text-muted small mt-1">2h ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="../img/avatars/avatar-4.jpg"
+													class="avatar img-fluid rounded-circle" alt="Christina Mason">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">Christina Mason</div>
+												<div class="text-muted small mt-1">Pellentesque auctor neque nec urna.
+												</div>
+												<div class="text-muted small mt-1">4h ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="../img/avatars/avatar-3.jpg"
+													class="avatar img-fluid rounded-circle" alt="Sharon Lessman">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">Sharon Lessman</div>
+												<div class="text-muted small mt-1">Aenean tellus metus, bibendum sed,
+													posuere ac, mattis non.</div>
+												<div class="text-muted small mt-1">5h ago</div>
+											</div>
+										</div>
+									</a>
+								</div>
+								<div class="dropdown-menu-footer">
+									<a href="#" class="text-muted">Show all messages</a>
+								</div>
+							</div>
+						</li>
+						<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站主頁右上角 4 下拉選單 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+
+						<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  網站主頁右上角 3 下拉選單 起始 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
+								data-bs-toggle="dropdown">
+								<i class="align-middle" data-feather="settings"></i>
+							</a>
+
+							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
+								data-bs-toggle="dropdown">
+								<img src="../img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1"
+									alt="Charles Hall" /> <span class="text-dark" id="login_member">Charles Hall</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-end">
+								<a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1"
+										data-feather="user"></i> Profile</a>
+								<a class="dropdown-item" href="#"><i class="align-middle me-1"
+										data-feather="pie-chart"></i> Analytics</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="index.html"><i class="align-middle me-1"
+										data-feather="settings"></i> Settings & Privacy</a>
+								<a class="dropdown-item" href="#"><i class="align-middle me-1"
+										data-feather="help-circle"></i> Help Center</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#">Log out</a>
+							</div>
+						</li>
+						<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站主頁右上角 3 下拉選單 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+					</ul>
+				</div>
+				<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站主頁右上角 1.提示 2.對話 3.下拉選單 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+			</nav>
+
+
+
+
+			<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  網站中間主頁 main 起始 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+			<main class="content">
+				<div class="container-fluid p-0">
+					<h1 class="mb-3 text-primary text-start"><strong>系統分析儀表板</strong></h1>
+					<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  網站中間主頁 main 第一排 分析資訊小方格+業績折線圖 起始 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+					<div class="row">
+						<!-- col-md-6佔一半寬度 offset-mdS-3兩邊各3置中 mt-3下移3-->
+						<div class="col-md-10 offset-mdS-1 mt-3">
+							<div class="card bg-secondary" style="--bs-bg-opacity: .1;">
+								<div class="card-body">
+									<form>
+										<div class="mb-3">
+											<label for="Sort_ID">產品類別</label>
+											<select name="Sort_ID" id="Sort_ID" class="form-select form-select-sm mb-3">
+												<option value="">--選擇類別--</option>
+												<option value="茶">茶飲</option>
+												<option value="奶">奶類</option>
+												<option value="水果">水果系列</option>
+												<option value="酒精">酒精飲品</option>
+												<option value="現泡">現泡類別</option>
+												<option value="特調">手作特調</option>
+												<option value="養樂多">多多系列</option>
+												<option value="新品">新品試喝</option>
+												<option value="鮮奶">牧場鮮奶茶</option>
+												<option value="豆奶">台灣鮮豆奶</option>
+											</select>
+											<!-- form-control 讓輸入框變漂亮 
+                                            <input type="text" id="Sort_ID" class="form-control" placeholder="請輸入1~5碼字數為 產品類別">
+                                            <div class="form-text" id="err_Sort_ID">請輸入1~5碼字數 !!</div>-->
+										</div>
+										<div class="mb-3">
+											<label for="Pname">產品名稱</label>
+											<!-- form-control 讓輸入框變漂亮 -->
+											<input type="text" id="Pname" class="form-control"
+												placeholder="請輸入2~10碼字數為 產品名稱">
+											<div class="form-text" id="err_Pname">請輸入2~10碼 產品名稱 !!</div>
+										</div>
+										<div class="mb-3">
+											<label for="Pdimg" class="form-label">產品圖片</label>
+											<input type="file" id="Pdimg" class="form-control"
+												placeholder="請選擇上傳產品圖片 !!">
+											<div class="form-text" id="err_Pdimg">請輸上傳產品圖片(小於2M的檔案!) !!</div>
+										</div>
+										<div class="mb-3">
+											<label for="Information">產品介紹</label>
+											<textarea type="text" id="Information" class="form-control"
+												placeholder="請輸入 1~ 300 數字為 產品介紹" rows="3"></textarea>
+											<div class="form-text" id="err_Information">請輸入產品介紹(允許HTML) !!</div>
+										</div>
+										<div class="mb-3">
+											<label for="Price">產品單價</label>
+											<input type="number" id="Price" class="form-control"
+												placeholder="請輸入 1~ 500 數字為 單價金額">
+											<div class="form-text" id="err_Price">請輸入單價金額 (NT$ 1~500) !!</div>
+										</div>
+										<div class="mb-3">
+											<label for="DisPrice">產品特價</label>
+											<input type="number" id="DisPrice" class="form-control"
+												placeholder="請輸入 0~ 500 數字為 特價金額">
+											<div class="form-text" id="err_DisPrice">請輸入特價金額 (NT$ 0~500)!!</div>
+										</div>
+										<div class="mb-3">
+											<label for="Points">贈送點數</label>
+											<input type="number" id="Points" class="form-control"
+												placeholder="請輸入0~100 數字為 贈送點數">
+											<div class="form-text" id="err_Points">請輸入贈送點數 (0~100) !!</div>
+										</div>
+									</form>
+									<div class="text-end" style="float:right">
+										<button type="button" class="btn btn-outline-secondary"
+											id="cancal_btn">取消</button>
+										<button type="button" class="btn btn-outline-danger" id="OK-btn"
+											disabled>確認</button>
+									</div>
+								</div>
+							</div>
+							<div id="showmsg"></div>
+						</div>
+					</div>
+					<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站中間主頁 main 第三排 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+				</div>
+			</main>
+			<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站中間主頁 main 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+
+
+
+
+			<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  網站主頁 footer 起始  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+			<div class="container-fluid">
+				<div class="row border border-light">
+					<div class="col-6">
+						<div class="text-start"><strong> Copyright © 2023 All rights reserved.</strong></div>
+					</div>
+					<div class="col-6">
+						<div class="text-end">Version 1.2</div>
+					</div>
+				</div>
+				<div class="row"><br></div>
+			</div>
+			<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站主頁 footer 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+		</div> <!-- main 結束-->
+	</div> <!-- wrapper 結束-->
+
+
+
+	<script src="../js/check_member_state.js"></script>
+
+	<script src="../js/app.js"></script>
+	<script src="../js/bootstrap.bundle.min.js"></script>
+	<script src="../js/jquery-3.6.1.min.js"></script>
+	<script>
+		var chk_Sort_ID = false, chk_Pname = false, chk_Information = false, chk_Price = false, chk_DisPrice = false, chk_Points = false, chk_Pdimg = false
+
+		$(function () {
+			var cook01 = getCookie("UID01"), cook02 = getCookie("UID02"), cook03 = getCookie("UID03");
+			var ID;
+			if (cook01 != "" && cook02 != "" && cook03 != "") {
+				var dataJson = {};    //宣告陣列物件
+				dataJson["uid01"] = cook01;
+				dataJson["uid02"] = cook02;
+				dataJson["uid03"] = cook03;
+				$.ajax({
+					type: "POST",
+					url: "../CRUD_HW/Member_UID_api.php",
+					data: JSON.stringify(dataJson),
+					contentType: "appliction/json;chartest=usf-8",   //定義輸出語系,避免亂碼
+					dataType: "json",           //定義接收格式
+					success: showdata_CheckUidOK,
+					error: function () {
+						console.log("error..... CRUD_HW/Member_UID_api.php")
+					}
+				});
+			}
+
+			function showdata_CheckUidOK(data) {
+				if (data.state) {
+					//顯示 會員名稱
+					//隱藏按鈕 (登入,註冊)
+					// console.log(data);
+
+					if (data.data[0].Userstate == "y") {
+
+						$("#login_member").text(data.data[0].Username + "會員你好　　");
+
+					} else {
+						alert("帳號停權中...請連絡負責人處理");
+					}
+					if (data.data[0].Userstate == "y" && data.data[0].Usertype == 100) {
+						$("#Rootmember").show();
+						$("#Rootmember2").show();
+						$("#Root1").show();
+						$("#Root2").show();
+						$("#Root3").show();
+						$("#Root0").hide();
+
+					}
+				} else {
+					alert(data.message);
+				}
+			}
+			//from w3school
+			function setCookie(cname, cvalue, exdays) {
+				const d = new Date();
+				d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+				let expires = "expires=" + d.toUTCString();
+				document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+			}
+			function getCookie(cname) {
+				let name = cname + "=";
+				let decodedCookie = decodeURIComponent(document.cookie);
+				let ca = decodedCookie.split(';');
+				for (let i = 0; i < ca.length; i++) {
+					let c = ca[i];
+					while (c.charAt(0) == ' ') {
+						c = c.substring(1);
+					}
+					if (c.indexOf(name) == 0) {
+						return c.substring(name.length, c.length);
+					}
+				}
+				return "";
+			}
+			//監聽 取消按鈕
+			$("#cancal_btn").bind("click", function () {
+				// console.log("cancel_click");
+				location.href = "ui-myShopProductCRUD.html";
+			});
+
+			//按鍵#OK-btn 監聽處理
+			$("#OK-btn").bind("click", function () {
+				//將傳遞給後端API的資料轉換成json    
+				var dataJson = {};    //宣告陣列物件
+				dataJson["Sort_ID"] = $("#Sort_ID").val();
+				dataJson["Pname"] = $("#Pname").val();
+				dataJson["Pdimg"] = $("#Pdimg").val();
+				dataJson["Information"] = $("#Information").val();
+				dataJson["Price"] = $("#Price").val();
+				dataJson["DisPrice"] = $("#DisPrice").val();
+				dataJson["Points"] = $("#Points").val();
+				console.log(JSON.stringify(dataJson));
+
+				$.ajax({
+					type: "POST",
+					url: "../db/myShopProduct_C_api.php",
+					data: JSON.stringify(dataJson),
+					contentType: "appliction/json;chartest=usf-8",   //定義輸出語系,避免亂碼
+					dataType: "json",           //定義接收格式
+					success: showdata,
+					error: function () {
+						console.log("error..... myShopProduct_C_api.php")
+					}
+				});
+			});
+
+			//#Sort_ID 即時監聽處理
+			$("#Sort_ID").bind("input propertychange", function () {
+				//console.log($("#Sort_ID").val().length);
+				if ($(this).val().length < 1 || $(this).val().length > 5) {
+					$("#err_Sort_ID").html("產品類別字數不符規則 1~5 字");
+					$("#err_Sort_ID").css("color", "red")
+					chk_Sort_ID = false
+				} else {
+					$("#err_Sort_ID").html("產品類別字數符合規則");
+					$("#err_Sort_ID").css("color", "#253f58")
+					chk_Sort_ID = true
+				}
+
+				// console.log(chk_Sort_ID);
+				// console.log(chk_Pname);
+				// console.log(chk_Pdimg);
+				// console.log(chk_Information);
+				// console.log(chk_Price);
+				// console.log(chk_DisPrice);
+				// console.log(chk_Points);
+
+				if (chk_Sort_ID && chk_Pname && chk_Pdimg && chk_Information && chk_Price && chk_DisPrice && chk_Points) {
+					/*     $("#OK-btn").prop("color", btn-primary); */
+					$("#OK-btn").prop("disabled", false);
+				} else {
+					$("#OK-btn").prop("disabled", true);
+				}
+			});
+
+			//#Pname 即時監聽處理
+			$("#Pname").bind("input propertychange", function () {
+				console.log($("#Pname").val().length);
+				if ($(this).val().length < 2 || $(this).val().length > 10) {
+					$("#err_Pname").html("產品名稱字數不符規則 2~10 字");
+					$("#err_Pname").css("color", "red")
+					chk_Pname = false
+				} else {
+					$("#err_Pname").html("產品名稱字數符合規則");
+					$("#err_Pname").css("color", "#253f58")
+					chk_Pname = true
+				}
+				if (chk_Sort_ID && chk_Pname && chk_Pdimg && chk_Information && chk_Price && chk_DisPrice && chk_Points) {
+					/*     $("#OK-btn").prop("color", btn-primary); */
+					$("#OK-btn").prop("disabled", false);
+				} else {
+					$("#OK-btn").prop("disabled", true);
+				}
+			});
+
+			//#Pdimg 即時監聽處理
+			$("#Pdimg").bind("input propertychange", function () {
+				//console.log($("#Pdimg").val().length);
+				if ($(this).val().length < 0 || $(this).val().length > 500) {
+					$("#err_Pdimg").html("產品圖片路徑不符規則需為 0~500 數字");
+					$("#err_Pdimg").css("color", "red")
+					chk_Pdimg = false
+				} else {
+					$("#err_Pdimg").html("產品圖片路徑符合規則");
+					$("#err_Pdimg").css("color", "#253f58")
+					chk_Pdimg = true
+				}
+				if (chk_Sort_ID && chk_Pname && chk_Pdimg && chk_Information && chk_Price && chk_DisPrice && chk_Points) {
+					/*     $("#OK-btn").prop("color", btn-primary); */
+					$("#OK-btn").prop("disabled", false);
+				} else {
+					$("#OK-btn").prop("disabled", true);
+				}
+			});
+
+			//#Information 即時監聽處理
+			$("#Information").bind("input propertychange", function () {
+				//console.log($("#Height").val().length);
+				if ($(this).val().length < 1 || $(this).val().length > 300) {
+					$("#err_Information").html("產品介紹不符規則需為 1~300 數字");
+					$("#err_Information").css("color", "red")
+					chk_Information = false
+				} else {
+					$("#err_Information").html("產品介紹符合規則");
+					$("#err_Information").css("color", "#253f58")
+					chk_Information = true
+				}
+				if (chk_Sort_ID && chk_Pname && chk_Pdimg && chk_Information && chk_Price && chk_DisPrice && chk_Points) {
+					/*     $("#OK-btn").prop("color", btn-primary); */
+					$("#OK-btn").prop("disabled", false);
+				} else {
+					$("#OK-btn").prop("disabled", true);
+				}
+			});
+
+			//#Price 即時監聽處理
+			$("#Price").bind("input propertychange", function () {
+				//console.log($("#Price").val());
+				if ($(this).val() < 1 || $(this).val() > 500) {
+					$("#err_Price").html("產品單價不符規則需為 1~500 數字");
+					$("#err_Price").css("color", "red")
+					chk_Price = false
+				} else {
+					$("#err_Price").html("產品單價金額符合規則");
+					$("#err_Price").css("color", "#253f58")
+					chk_Price = true
+				}
+				if (chk_Sort_ID && chk_Pname && chk_Pdimg && chk_Information && chk_Price && chk_DisPrice && chk_Points) {
+					/*     $("#OK-btn").prop("color", btn-primary); */
+					$("#OK-btn").prop("disabled", false);
+				} else {
+					$("#OK-btn").prop("disabled", true);
+				}
+			});
+
+			//#DisPrice 即時監聽處理
+			$("#DisPrice").bind("input propertychange", function () {
+				//console.log($("#Price").val().length);
+				if ($(this).val() < 0 || $(this).val() > 500) {
+					$("#err_DisPrice").html("產品特價不符規則需為 0~500 數字");
+					$("#err_DisPrice").css("color", "red")
+					chk_DisPrice = false
+				} else {
+					$("#err_DisPrice").html("產品特價金額符合規則");
+					$("#err_DisPrice").css("color", "#253f58")
+					chk_DisPrice = true
+				}
+				if (chk_Sort_ID && chk_Pname && chk_Pdimg && chk_Information && chk_Price && chk_DisPrice && chk_Points) {
+					/*     $("#OK-btn").prop("color", btn-primary); */
+					$("#OK-btn").prop("disabled", false);
+				} else {
+					$("#OK-btn").prop("disabled", true);
+				}
+			});
+
+			//#Points 即時監聽處理
+			$("#Points").bind("input propertychange", function () {
+				//console.log($("#Weight").val().length);
+				if ($(this).val() < 0 || $(this).val() > 100) {
+					$("#err_Points").html("贈送點數不符規則需為 0~100 數字");
+					$("#err_Points").css("color", "red")
+					chk_Pnum = false
+				} else {
+					$("#err_Points").html("贈送點數符合規則");
+					$("#err_Points").css("color", "#253f58")
+					chk_Points = true
+				}
+				if (chk_Sort_ID && chk_Pname && chk_Pdimg && chk_Information && chk_Price && chk_DisPrice && chk_Points) {
+					/*     $("#OK-btn").prop("color", btn-primary); */
+					$("#OK-btn").prop("disabled", false);
+				} else {
+					$("#OK-btn").prop("disabled", true);
+				}
+			});
+
+		});
+
+		function showdata(data) {
+			// console.log(data);
+			if (data.state) {
+				alert(data.message);
+				/* 清空輸入畫面 */
+				$("#Sort_ID").val("");
+				$("#Pname").val("");
+				$("#Pdimg").val("");
+				$("#Information").val("");
+				$("#Price").val("");
+				$("#DisPrice").val("");
+				$("#Points").val("");
+
+
+			} else {
+				alert(data.message);
+			}
+		}
+	</script>
+	<script>
+		$(function () {
+			//利用cookie uid 確認登入狀態
+			if (getCookie("UID01") != "" && getCookie("UID02") != "" && getCookie("UID03") != "") {
+				console.log("UID存在");
+				//傳遞至後端驗證UID
+				var jsonData = {};
+				jsonData["uid01"] = getCookie("UID01");
+				jsonData["uid02"] = getCookie("UID02");
+				jsonData["uid03"] = getCookie("UID03");
+				console.log(JSON.stringify(jsonData));
+				$.ajax({
+					type: "POST",
+					url: "../CRUD_HW/Member_UID_api.php",
+					data: JSON.stringify(jsonData),
+					dataType: "json",
+					success: uid_check_showdata,
+					error: function () {
+						alert("error_Member_UID_api.php");
+					}
+				})
+			} else {
+				alert("請先登錄或註冊會員");
+				location.href = "../index.html";
+			}
+		})
+		//確認登入狀態
+		function uid_check_showdata(data) {
+			console.log(data.data[0].Username);
+
+			if (data.state) {
+
+				//UID驗證成功
+				//顯示會員相關訊息
+				if (data.data[0].Userstate == "y") {
+					if (data.data[0].Usertype == 100) {
+						//此帳號為啟用狀態
+						$("#login_member").text(data.data[0].Username + "會員您好!")
+					} else {
+						// alert("帳號權限不足!");
+						// location.href = "../index.html";
+
+					}
+				} else {
+					//此帳號為停權狀態
+					alert("帳號已被停權!");
+					location.href = "../index.html";
+				}
+			} else {
+				//UID驗證失敗 
+				location.href = "../index.html";
+
+			}
+
+		}
+	</script>
+</body>
+
+</html>

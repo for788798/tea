@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<!-- 網站描述 jccFix 可刪-->
+	<meta name="author" content="AdminKit"> <!-- 作者 jccFix 可刪-->
+	<meta name="keywords"
+		content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+	<!-- 關鍵字 jccFix 上架前必須修改-->
+
+	<link href="../css/app.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">	
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<title>admin Login | 系統後台登入</title>	
+</head>
+
+<body>
+	<main class="d-flex w-100">
+		<div class="container d-flex flex-column">
+			<div class="row vh-100">
+				<div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+					<div class="d-table-cell align-middle">
+
+						<div class="text-center mt-4">
+							<h1 class="h1">就找茶 歡迎你</h1>
+						</div>
+
+						<div class="card">
+							<div class="card-body">
+								<div class="m-sm-4">
+									<div class="text-center">
+										<img src="../img/avatars/tea.jpg" alt="Charles Hall" class="img-fluid rounded-circle" width="132" height="132" />
+									</div>
+									<form>
+										<div class="mb-3">
+											<label class="form-label fs-3 text-primary">帳號</label>
+											<input class="form-control form-control-lg" type="text" name="username_login" id="username_login"  placeholder="請輸入帳號" />
+										</div>
+										<div class="mb-3">
+											<label class="form-label fs-3 text-primary">密碼</label>
+											<input class="form-control form-control-lg" type="password" name="pwd_login" id="pwd_login" placeholder="請輸入密碼" />
+											<small>
+												<a href="index.html">忘記密碼 ??</a>
+											</small>
+										</div>
+										<div>
+											<label class="form-check">
+												<input class="form-check-input" type="checkbox" value="remember-me" name="remember-me" checked>
+												<span class="form-check-label">下次記得我</span>
+          									</label>
+										</div>
+										<div class="text-center mt-3">
+											<a href="#" class="btn btn-lg btn-primary" id="Login_btn">確認登入</a>
+											<!-- <button type="submit" class="btn btn-lg btn-primary">Sign in</button> -->
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<script src="../js/app.js"></script>
+	<script src="../js/jquery-3.6.1.min.js"></script>
+
+	<script>		
+		var cook01 = getCookie("UID01"), cook02 = getCookie("UID02"), cook03 = getCookie("UID03")
+        if (cook01 != "" && cook02 != "" && cook03 != "") {
+            var dataJson = {};    //宣告陣列物件
+            dataJson["UID01"] = cook01;
+            dataJson["UID02"] = cook02;
+            dataJson["UID03"] = cook03;
+            $.ajax({
+                type: "POST",
+                url: "../db/myShopAdmin_checkUid_api.php",
+                data: JSON.stringify(dataJson),
+                contentType: "appliction/json;chartest=usf-8",   //定義輸出語系,避免亂碼
+                dataType: "json",           //定義接收格式
+                success: showdata_CheckUidOK,
+                error: function () {
+                    console.log("error..... myShopAdmin_checkUid_api.php")					
+                }
+            });
+        }
+
+		$(function () {
+            $("#Login_btn").bind("click", function () {
+                //將傳遞給後端API的資料轉換成json    
+                var dataJson = {};    //宣告陣列物件
+                dataJson["Username"] = $("#username_login").val();
+                dataJson["Pwd"] = $("#pwd_login").val();
+                console.log(JSON.stringify(dataJson));
+
+                $.ajax({
+                    type: "POST",
+                    url: "../CRUD_HW/Member_login_api.php",
+                    data: JSON.stringify(dataJson),
+                    contentType: "appliction/json;chartest=usf-8",   //定義輸出語系,避免亂碼
+                    dataType: "json",           //定義接收格式
+                    success: showdata_loginOK,
+                    error: function () {
+                        // console.log("error..... myShopAdmin_login_api.php")
+						alert("登入失敗 ... 請重新登入")
+                    }
+                });
+            });
+
+		});
+
+		function showdata_loginOK(data) {
+            console.log(data);
+            if (data.state) {
+                /*                 alert(data.message);
+                                location.href = "mem_control_panel.html"  */
+                console.log(data.data[0].Userstate);
+                setCookie("UID01", data.data[0].UID01, 7);
+                setCookie("UID02", data.data[0].UID02, 7);
+                setCookie("UID03", data.data[0].UID03, 7);
+
+                //顯示 會員名稱
+                $("#login_member").text(data.data[0].Username + "會員你好　　");
+                //隱藏按鈕 (登入,註冊)
+                $("#s2_login_btn").hide();
+                $("#s2_logout_btn").show();
+                $("#s2_reg_btn").hide();
+
+                if (data.data[0].Userstate == "y") {
+                    
+                    
+                    location.href = "index.html";
+                    $("body").css("background-color", "white");
+                    $("#link_control").show();    //打開後台管理
+                    $("#login_member").text(data.data[0].Username + "會員你好　　");
+                } else {
+                    alert("帳號停權中...請連絡負責人處理");
+                    $("body").css("background-color", "blue");
+                }
+            } else {
+                alert(data.message);
+            }
+        }
+
+		function showdata_CheckUidOK(data) {
+            console.log(data);
+            if (data.state) {
+                console.log(data.data.Userstate);
+                //顯示 會員名稱
+                //隱藏按鈕 (登入,註冊)
+                $("#s2_login_btn").hide();
+                $("#s2_logout_btn").show();
+                $("#s2_reg_btn").hide();
+
+                if (data.data.Userstate[0] == "y") {
+
+                    location.href = "index.html";
+                    $("body").css("background-color", "white");
+                    $("#link_control").show();    //打開後台管理
+                    $("#login_member").text(data.data.Username + "會員你好　　");
+                    
+                } else {
+                    alert("帳號停權中...請連絡負責人處理");
+                    $("body").css("background-color", "blue");
+                }
+            } else {
+                alert(data.message);
+            }
+        }
+		//from w3school
+		function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }        		
+	</script>
+</body>
+
+</html>

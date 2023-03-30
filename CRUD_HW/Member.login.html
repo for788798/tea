@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/myall.css">
+</head>
+
+<body>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col">
+                <nav class="navbar navbar-expand-lg bg-light">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">首頁</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#">訂購</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">購物車</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">訂單</a>
+                                </li>
+                            </ul>
+                            <!-- <div class="mx-auto fs-1 ">登入會員</div> -->
+                            <span class="text-danger fw-900 fs-3 me-2" id="login_member"></span>
+                            <!-- <a href="Member.login.html" class="btn ms-auto" id="login_btn">登入</a> -->
+                             <a href="Member.reg.html" class="btn" id="reg_btn">註冊</a>
+                            <button class="btn" id="logout_btn" style="display: none;">登出</button> 
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-6 offset-3">
+                <div class="card">
+                    <h5 class="card-header text-center">會員登入</h5>
+
+                    <div class="card-body">
+                        <div class="row align-items-center mb-3">
+                            <div class="mb-3">
+                                <label for="loginusername" class="form-label">帳號</label>
+                                <input type="text" name="loginusername" id="loginusername" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row align-items-center mt-3">
+                            <div class="mb-3">
+                                <label for="loginpassword" class="form-label">密碼</label>
+                                <input type="password" name="loginpassword" id="loginpassword" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-end">
+                        <a href="" class="me-auto " data-bs-toggle="modal" data-bs-target="#registermodal">註冊帳號!!</a>
+                        <button type="button" class="btn btn-primary me-3" id="log_btn" data-bs-dismiss="modal">登入</button>
+                        <button type="button" class="btn btn-secondary" onclick="history.back()">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.6.1.min.js"></script>
+    <script src="js/check_member_state.js"></script>
+    <script>
+        //登入
+        $(function () {
+            $("#log_btn").bind("click", function () {
+                console.log("test");
+                var jsonData = {};
+                jsonData["Username"] = $("#loginusername").val();
+                jsonData["Pwd"] = $("#loginpassword").val();
+                console.log(JSON.stringify(jsonData));
+
+                $.ajax({
+                    type: "POST",
+                    url: "Member_login_api.php",
+                    data: JSON.stringify(jsonData),
+                    dataType: "json",
+                    success: log_showdata,
+                    error: function () {
+                        alert("error-Member_login_api.php");
+                    }
+                })
+            })
+        })
+        //登入
+        function log_showdata(data) {
+            console.log(data);
+            if (data.state) {
+                // alert(data.message);
+                // location.href = "mem_control_panel.html"
+                //將UID寫入COOKIE
+                setCookie("UID01", data.data[0].UID01, 7);
+                setCookie("UID02", data.data[0].UID02, 7);
+                setCookie("UID03", data.data[0].UID03, 7);
+                console.log(data.data[0].Userstate);
+
+                if (data.data[0].Userstate == "y") {
+                    $("#link_control").show();
+                    // $("#log_btn").click(window.history.go(-1));
+                    location.href = "progess.html";
+
+                    // //顯示會員帳號相關訊息
+                    // $("#login_member").text(data.data[0].Username + "會員您好!");
+                    // //顯示會員登出鈕
+                    // $("#s2_logout_btn").show();
+                    // //隱藏登入與註冊按鈕
+                    // $("#s2_login_btn").hide();
+                    // $("#s2_reg_btn").hide();
+                    // //更換背景顏色
+                    // $("#mybody").removeClass();
+                    // $("#mybody").css("background-color", "red");
+                    // //顯示VIP功能 選單
+                    // $("#link_control").show();
+                    // $("#link_control01").show();
+                    // $("#link_control02").show();
+                } else {
+                    alert("此帳號已被停權");
+                }
+
+            } else {
+                alert(data.message);
+            }
+
+        }
+    </script>
+</body>
+
+</html>

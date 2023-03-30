@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Nosifer&family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap');
+
+:root{  /*  色票取自   https://www.shutterstock.com/zh-Hant/blog/101-free-color-combinations-design-inspiration */
+    --mywhite: #dfedf9;
+    --myyellow:#fff826;
+    --myred:#e50bab;
+    --myblack:#000000;
+    --mycolor1: #d9cfe7;
+    --mycolor2: #a8bcba;
+    --mycolor3: #acc66d;
+    --mycolor4: #50697d;
+    --mycolor5: #CADBAE;
+    --mycolor6: #B0CCCF;
+    --mycolor7: #D65A50;
+    --mycolor8: #1E3815;
+    --mycolor9: #8AD5EB;
+    --mycolor10: #8A54A2;
+    --mycolor11: #5954A4;
+    --mycolor12: #04254E;
+    --mycolor13: #FEC748;
+    --mycolor14: #D92139;
+    --mycolor15: #AEC33A;
+    --mycolor16: #253F58;
+    --mycolor17: #e8f778;
+}
+.jccbox01 {
+    height: 180px;
+    background-color: var(--mycolor1);
+    border: 3px solid var(--mycolor2);
+    line-height: 180px;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bolder;
+    color: var(--mycolor8);
+}
+.jccbox02 {
+    height: 100px;
+    background-color: var(--mycolor2);
+    border: 3px solid var(--mycolor3);
+    line-height: 100px;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bolder;
+    color: var(--mycolor12);
+}
+.jccbox03 {
+    border: 3px solid var(--mycolor12);
+    padding: 10px;
+    /*margin: 10px;*/
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px var(--mycolor11);            
+}
+.jccbox04 {
+    border: 3px solid var(--mycolor12);
+    padding: 10px;
+    /*margin: 10px;*/
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px var(--mycolor11);            
+    background-color: rgb(193, 193, 193);
+}
+.boxshadow {
+    border: 3px solid var(--mycolor12);
+    padding: 10px;
+    /*margin: 10px;*/
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px var(--mycolor11);            
+}
+.boxshadow:hover {
+    background-color: var(--mycolor9);
+    border: 3px solid var(--mycolor10);}
+
+.bg-cover{
+    background-size: cover;
+    background-position: center center;
+}
+.mybtn {
+    display: block;
+    /* 定義區塊 */
+    width: 100%;
+    height: 40px;
+    background-color: var(--mycolor5);
+    border: 2px solid var(--mycolor4);
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bolder;
+    color: var(--mycolor12);
+}
+.ggtext100{
+    font-weight:100;
+}
+.ggtext300{
+    font-weight:300;
+}
+.ggtext400{
+    font-weight:400;
+}
+.ggtext500{
+    font-weight:500;
+}
+.ggtext700{
+    font-weight:700;
+}
+.ggtext900{
+    font-weight:900;
+}

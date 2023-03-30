@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台中路邊停車即時位子數量</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/MarkerCluster.css">
+    <link rel="stylesheet" href="css/myall.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <style>
+        #listgroup {
+            height: 80vh;
+            overflow: scroll;
+        }
+
+        /*設定小區塊 四方型*/
+        .marker-cluster-samll {
+            background-color: rgba(170, 191, 78, 0.6);
+        }
+
+        /*設定小區塊 圓型*/
+        .marker-cluster-small div {
+            background-color: rgba(237, 162, 182, 0.6);
+        }
+
+        /*設定中區塊 四方型*/
+        .marker-cluster-medium {
+            background-color: rgba(161, 62, 151, 0.6);
+        }
+
+        /*設定中區塊 圓型*/
+        .marker-cluster-medium div {
+            background-color: rgba(99, 42, 126, 0.6);
+        }
+
+        /*設定大區塊 四方型*/
+        .marker-cluster-large {
+            background-color: rgba(69, 187, 137, 0.6);
+        }
+
+        /*設定大區塊 圓型*/
+        .marker-cluster-large div {
+            background-color: rgba(145, 212, 194, 0.6);
+        }
+
+        /*字形*/
+        .marker-cluster div {
+            width: 30px;
+            height: 30px;
+            margin-left: 5px;
+            margin-top: 5px;
+
+            text-align: center;
+            border-radius: 15px;
+            font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+        }
+
+        .marker-cluster span {
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3 bg-primary vh-100 p-3">
+                <select class="form-select form-select-lg my-3" aria-label=".form-select-lg example " id="myareaname">
+                    <option selected disabled>--選擇區域--</option>
+                    <option value="台中火車站">台中火車站</option>
+                    <option value="洲際棒球場">洲際棒球場</option>
+                </select>
+                <!-- <select class="form-select form-select-lg my-3" aria-label=".form-select-lg example" id="mycountryname">
+                    <option selected disabled>--位子--</option>
+                    <option value="北屯區-民營-臺中洲際棒球場立體P">北屯區-民營-臺中洲際棒球場立體P</option>
+                    <option value="北屯區-公有-仁德P">北屯區-公有-仁德P</option>
+                </select> -->
+                <ul class="list-group" id="listgroup">
+                    <li class="list-group-item">
+                        <div class="fs-4 ">北屯區-民營-臺中洲際棒球場立體P</div>
+                        <div class="fs-5">總停車位子: XXXX</div>
+                        <div class="fs-5">剩餘停車位子: XXXX</div>
+                        <div class="fs-5">計費方式: XXX</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-9 bg-secondary">
+                <form class="" role="search">
+
+                    <span class="text-warning fw-900 fs-3 me-2" id="login_member"></span>
+                    <button class="btn btn-outline-primary" type="button" id="s2_logout_btn">登出</button>
+                    <div class="container">
+
+                        <div class="col bg-info">
+                            <div class="vh-100" id="map"></div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <script src="js/jquery-3.6.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/leaflet-color-markers.js"></script>
+    <script src="js/CityCountyData.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <script src="js/leaflet.markercluster.js"></script>
+    <script src="js/check_member_state.js"></script>
+    <!-- <script src="js/leaflet.js"></script> -->
+
+    <script>
+
+        var selectArea;
+        var carData;
+        var map;
+        var markers;
+        var lat, lng;
+        $(function () {
+            //畫地圖TCNR
+            map = L.map('map').setView([24.1705333, 120.610123], 13);
+            // 24.1705333,120.610123,15z
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            //***************使用markerClusterGroup*************************************
+            //***************使用markerClusterGroup*************************************
+            //***************使用markerClusterGroup*************************************
+            //***************使用markerClusterGroup*************************************
+            //***************使用markerClusterGroup*************************************
+
+            var markers = new L.markerClusterGroup().addTo(map);
+
+
+
+            //載入台中市停車場統計資料
+            $.ajax({
+                type: "GET",
+                url: "js/臺中市停車場剩餘車位.json",
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    carData = data;
+                },
+                error: function () {
+                    alert("error-js/臺中市停車場剩餘車位.json");
+                }
+            });
+            console.log(carData);
+            // 渲染區域選單
+            $("#myareaname").empty();
+            $("#myareaname").append("<option selected disabled>--選擇區域--</option>");
+            carData.forEach(function (item) {
+                // console.log(item.Name);
+
+                var strHTML = '<option value="' + item.Name + '">' + item.Name + '</option>';
+                $("#myareaname").append(strHTML);
+            });
+
+            //監聽 #myareaname取得所選的區域名稱
+            $("#myareaname").change(function () {
+                console.log($(this).val());
+                selectArea = $(this).val();
+
+                //篩選已決定的縣市鄉鎮區的藥局
+                var listData = [];//收集篩選後的藥局資料
+
+                carData.forEach(function (item) {
+                    if (item.Name == selectArea) {
+                        listData.push(item);
+                    }
+                })
+                console.log(listData);
+                //渲染藥局list-group
+                $("#listgroup").empty();
+                //選完鄉鎮區當下清除前一次選的地點 在重新印新的地點
+                removeMarker();
+                listData.forEach(function (item, key) {
+
+                    console.log(item);
+                    item.ParkingLots.forEach(function (item01, key) {
+                        console.log(item01.Position)
+                        var btrHTML = ' <li class="list-group-item" data-position=' + item01.Position + ' data-total=' + item01.TotalCar + ' data-available=' + item01.AvailableCar + ' data-notes=' + item01.Notes + ' data-lat=' + item01.Y + ' data-lng=' + item01.X + '><div class="fs-4">' + item01.Position + '</div><div class="fs-5">總停車位子:' + item01.TotalCar + '</div><div class="fs-5">剩餘停車位子: ' + item01.AvailableCar + '</div><div class="fs-5">計費方式: ' + item01.Notes + '</div></li>'
+                        $("#listgroup").append(btrHTML);
+
+                        // console.log(item01.X);
+                        // console.log(item01.Y);
+
+                        var lat = item01.Y;
+                        var lng = item01.X;
+                        console.log(lat, lng);
+                        var strHTML01 = '<div class="card"><div class="card-header fs-2 text-bg-primary">' + item01.Position + '</div><div class="card-body"><div class="fs-4">總停車位子: ' + item01.TotalCar + '</div><div class="fs-4">剩餘停車位子: ' + item01.AvailableCar + '</div><div class="fs-4">計費方式 : ' + item01.Notes + '</div>';
+                        // L.marker([lat, lng]).addTo(map).bindPopup(strHTML01);
+                        // L.marker([51.5, -0.09], {icon: greenIcon}).addTo(map);
+
+                        markers.addLayer(L.marker([lat, lng]).bindPopup(strHTML01));
+
+                        //將地圖移動到第一筆資料
+                        console.log(key);
+                        if (key == 0) {
+                            map.panTo([lat, lng]);
+                        }
+
+                    })
+
+                })
+                //hover 監聽 list-group-item 觸發 marker popup事件
+                $("#listgroup .list-group-item").hover(function () {
+                    console.log($(this).data("lat"));
+                    // console.log($(this).data("address"));
+                    // console.log($(this).data("phone"));
+                    // console.log($(this).data("mask_adult"));
+                    // console.log($(this).data("mask_child"));
+                    // console.log($(this).data("lat"));
+                    // console.log($(this).data("lng"));
+                    markerPopup($(this).data("position"), $(this).data("total"), $(this).data("available"), $(this).data("notes"), $(this).data("lat"), $(this).data("lng"))
+                })
+            })
+
+            //利用cookie uid 確認登入狀態
+            if (getCookie("UID01") != "" && getCookie("UID02") != "" && getCookie("UID03") != "") {
+                console.log("UID存在");
+                //傳遞至後端驗證UID
+                var jsonData = {};
+                jsonData["uid01"] = getCookie("UID01");
+                jsonData["uid02"] = getCookie("UID02");
+                jsonData["uid03"] = getCookie("UID03");
+                console.log(JSON.stringify(jsonData));
+                $.ajax({
+                    type: "POST",
+                    url: "Member_UID_api.php",
+                    data: JSON.stringify(jsonData),
+                    dataType: "json",
+                    success: uid_check_showdata,
+                    error: function () {
+                        alert("error_Member_UID_api.php");
+                    }
+                })
+            } else {
+                alert("請先登錄或註冊會員");
+                location.href = "progess.html";
+            }
+            //登出即時監聽
+            $("#s2_logout_btn").bind("click", function () {
+                // console.log("test");
+
+                setCookie("UID01", "", 7);
+                setCookie("UID02", "", 7);
+                setCookie("UID03", "", 7);
+
+                location.href = "progess.html";
+
+            })
+        })
+        //確認登入狀態
+        function uid_check_showdata(data) {
+            console.log(data.data[0].Username);
+
+            if (data.state) {
+
+                //UID驗證成功
+                //顯示會員相關訊息
+                if (data.data[0].Userstate == "y") {
+                    if (data.data[0].Username == "demomap") {
+                        //此帳號為啟用狀態
+                        $("#login_member").text(data.data[0].Username + "會員您好!")
+                    } else {
+                        alert("帳號權限不足!");
+                        location.href = "progess.html";
+
+                    }
+                } else {
+                    //此帳號為停權狀態
+                    alert("帳號已被停權!");
+                    location.href = "progess.html";
+                }
+            } else {
+                //UID驗證失敗 
+                location.href = "progess.html";
+
+            }
+
+        }
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            console.log(position);
+            console.log(position.coords.latitude);
+            console.log(position.coords.longitude);
+            x.innerHTML = "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+        }
+        //清除"所有"marker的圖層
+        function removeMarker() {
+            map.eachLayer(function (layer) {
+                if (layer instanceof L.Marker) {
+                    map.removeLayer(layer)
+                }
+            });
+        }
+        function markerPopup(position, total, available, notes, lat, lng) {
+            //印出藏入的7個值
+            console.log(position, total, available, notes, lat, lng);
+            var popupHTML = '<div class="card"><div class="card-header fs-2 text-bg-primary">' + position + '</div><div class="card-body"><div class="fs-4">總停車位子: ' + total + '</div><div class="fs-4">剩餘停車位子: ' + available + '</div><div class="fs-4">計費方式: ' + notes + '</div></div>';
+            L.marker([lat, lng]).addTo(map).bindPopup(popupHTML).openPopup();
+        }
+    </script>
+</body>
+
+</html>

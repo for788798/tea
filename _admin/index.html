@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<!-- 網站描述 jccFix 可刪-->
+	<meta name="author" content="AdminKit"> <!-- 作者 jccFix 可刪-->
+	<meta name="keywords"
+		content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+	<!-- 關鍵字 jccFix 上架前必須修改-->
+
+	<link href="../css/app.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+
+	<link rel="stylesheet" href="../css/all.min.css"> <!-- Font Awesome icon CSS 使用 jcc add-->
+	<title>[就找茶]後台管理</title>
+	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+		integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+	<link rel="stylesheet" href="../css/MarkerCluster.css">
+	<style>
+		#listData {
+			height: 80vh;
+			overflow: scroll;
+		}
+
+		.marker-cluster-small {
+			background-color: #E6E417;
+		}
+
+		.marker-cluster-medium {
+			background-color: #008AE6;
+		}
+
+		.marker-cluster-large {
+			background-color: #E81B1A;
+		}
+
+		.marker-cluster {
+			width: 30px;
+			height: 30px;
+			margin-top: 5px;
+			margin-left: 5px;
+			padding: 5px;
+
+			text-align: center;
+			border-radius: 50%;
+			font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+		}
+
+		.marker-cluster span {
+			line-height: 30px;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  左側 Menu  起始 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+		<nav id="sidebar" class="sidebar js-sidebar">
+			<div class="sidebar-content js-simplebar">
+				<a class="sidebar-brand" href="../index.html">
+					<span class="align-middle fs-2">
+						<i class="fa-solid fa-leaf text-success"></i>&nbsp&nbsp&nbsp&nbsp就找茶&nbsp&nbsp
+						<i class="fa-solid fa-leaf text-success"></i>
+					</span>
+				</a>
+
+				<ul class="sidebar-nav">
+
+					<div id="Rootmember" style="display: none;">
+						<li class="sidebar-header">
+							管理者資料管理
+						</li>
+						<li class="sidebar-item">
+							<a class="sidebar-link" href="index.html">
+								<i class="align-middle" data-feather="sliders"></i> <span
+									class="align-middle">系統資訊儀表板</span>
+							</a>
+						</li>
+					</div>
+
+
+					<li class="sidebar-header">
+						會員資料管理
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="member.html">
+							<i class="align-middle" data-feather="user"></i> <span class="align-middle">會員基本資料維護</span>
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="memoder.html">
+							<i class="align-middle" data-feather="user-plus"></i> <span
+								class="align-middle">會員訂單查詢</span>
+						</a>
+					</li>
+					<!-- 					<li class="sidebar-item">
+						<a class="sidebar-link" href="pages-sign-in.html">
+							<i class="align-middle" data-feather="log-in"></i> <span class="align-middle">登入</span>
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="pages-blank.html">
+							<i class="align-middle" data-feather="book"></i> <span class="align-middle">空白</span>
+						</a>
+					</li> -->
+					<div id="Rootmember2" style="display: none;">
+						<li class="sidebar-header">
+							茶飲品資料管理
+						</li>
+						<li class="sidebar-item">
+							<a class="sidebar-link" href="ui-myShopProductCRUD.html">
+								<i class="fa-solid fa-mug-hot"></i> <span class="align-middle">茶飲產品資料維護</span>
+							</a>
+						</li>
+						<li class="sidebar-item">
+							<a class="sidebar-link" href="ui-myShopSpecialCRUD.html">
+								<i class="fa-solid fa-mug-saucer"></i></i> <span class="align-middle">茶飲產品分類檔維護</span>
+							</a>
+						</li>
+					</div>
+
+				</ul>
+
+				<div class="sidebar-cta">
+					<div class="sidebar-cta-content">
+						<strong class="d-inline-block mb-2">連鎖茶店系統</strong>
+						<div class="mb-3 text-sm">
+							你是否正在找 茶飲品訂購 管理系統 , [就找茶] 幫你一切搞定
+						</div>
+						<div class="d-grid">
+							<a href="index.html" class="btn btn-primary">測試版下載</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  左側 Menu 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+
+		<div class="main">
+			<nav class="navbar navbar-expand navbar-light navbar-bg">
+				<a class="sidebar-toggle js-sidebar-toggle">
+					<i class="hamburger align-self-center"></i>
+				</a>
+
+				<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  網站主頁右上角 1.提示 2.對話 3.下拉選單  起始 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+				<div class="navbar-collapse collapse">
+					<ul class="navbar-nav navbar-align">
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
+								<div class="position-relative">
+									<i class="align-middle" data-feather="bell"></i>
+									<span class="indicator">4</span>
+								</div>
+							</a>
+							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
+								aria-labelledby="alertsDropdown">
+								<div class="dropdown-menu-header">
+									4 New Notifications
+								</div>
+								<div class="list-group">
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<i class="text-danger" data-feather="alert-circle"></i>
+											</div>
+											<div class="col-10">
+												<div class="text-dark">Update completed</div>
+												<div class="text-muted small mt-1">Restart server 12 to complete the
+													update.</div>
+												<div class="text-muted small mt-1">30m ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<i class="text-warning" data-feather="bell"></i>
+											</div>
+											<div class="col-10">
+												<div class="text-dark">Lorem ipsum</div>
+												<div class="text-muted small mt-1">Aliquam ex eros, imperdiet vulputate
+													hendrerit et.</div>
+												<div class="text-muted small mt-1">2h ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<i class="text-primary" data-feather="home"></i>
+											</div>
+											<div class="col-10">
+												<div class="text-dark">Login from 192.186.1.8</div>
+												<div class="text-muted small mt-1">5h ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<i class="text-success" data-feather="user-plus"></i>
+											</div>
+											<div class="col-10">
+												<div class="text-dark">New connection</div>
+												<div class="text-muted small mt-1">Christina accepted your request.
+												</div>
+												<div class="text-muted small mt-1">14h ago</div>
+											</div>
+										</div>
+									</a>
+								</div>
+								<div class="dropdown-menu-footer">
+									<a href="#" class="text-muted">Show all notifications</a>
+								</div>
+							</div>
+						</li>
+
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown"
+								data-bs-toggle="dropdown">
+								<div class="position-relative">
+									<i class="align-middle" data-feather="message-square"></i>
+								</div>
+							</a>
+							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
+								aria-labelledby="messagesDropdown">
+								<div class="dropdown-menu-header">
+									<div class="position-relative">
+										4 New Messages
+									</div>
+								</div>
+								<div class="list-group">
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="../img/avatars/avatar-5.jpg"
+													class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">Vanessa Tucker</div>
+												<div class="text-muted small mt-1">Nam pretium turpis et arcu. Duis arcu
+													tortor.</div>
+												<div class="text-muted small mt-1">15m ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="../img/avatars/avatar-2.jpg"
+													class="avatar img-fluid rounded-circle" alt="William Harris">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">William Harris</div>
+												<div class="text-muted small mt-1">Curabitur ligula sapien euismod
+													vitae.</div>
+												<div class="text-muted small mt-1">2h ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="../img/avatars/avatar-4.jpg"
+													class="avatar img-fluid rounded-circle" alt="Christina Mason">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">Christina Mason</div>
+												<div class="text-muted small mt-1">Pellentesque auctor neque nec urna.
+												</div>
+												<div class="text-muted small mt-1">4h ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="../img/avatars/avatar-3.jpg"
+													class="avatar img-fluid rounded-circle" alt="Sharon Lessman">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">Sharon Lessman</div>
+												<div class="text-muted small mt-1">Aenean tellus metus, bibendum sed,
+													posuere ac, mattis non.</div>
+												<div class="text-muted small mt-1">5h ago</div>
+											</div>
+										</div>
+									</a>
+								</div>
+								<div class="dropdown-menu-footer">
+									<a href="#" class="text-muted">Show all messages</a>
+								</div>
+							</div>
+						</li>
+						<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站主頁右上角 4 下拉選單 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+
+						<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  網站主頁右上角 3 下拉選單 起始 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
+								data-bs-toggle="dropdown">
+								<i class="align-middle" data-feather="settings"></i>
+							</a>
+
+							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
+								data-bs-toggle="dropdown">
+								<img src="../img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" /> <span
+									class="text-dark" id="login_member">Charles Hall</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-end">
+								<a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1"
+										data-feather="user"></i> Profile</a>
+								<a class="dropdown-item" href="#"><i class="align-middle me-1"
+										data-feather="pie-chart"></i> Analytics</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="index.html"><i class="align-middle me-1"
+										data-feather="settings"></i> Settings & Privacy</a>
+								<a class="dropdown-item" href="#"><i class="align-middle me-1"
+										data-feather="help-circle"></i> Help Center</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#">Log out</a>
+							</div>
+						</li>
+						<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站主頁右上角 3 下拉選單 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+					</ul>
+				</div>
+				<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站主頁右上角 1.提示 2.對話 3.下拉選單 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+			</nav>
+
+
+			<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  網站中間主頁 main 起始 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+			<main class="content">
+				<div class="container-fluid p-0">
+					<h1 class="mb-3 text-primary text-start"><strong>系統儀表板</strong></h1>
+					<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  一般會員顯示畫面  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+					<div class="row" id="Root0">
+						<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  網站中間主頁   ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+						<div class="row">
+							<div class="col-md-3 vh-100">
+								<div class="input-group  d-flex my-3">
+									<!-- <label class="input-group col-3 font-weight-bold" for="inputGroupSelect01">
+									縣市
+									</label> -->
+									<select class="form-select form-select-lg form-control " id="mycityname"
+										aria-label=".form-select-lg example">
+										<option selected disabled>-選擇縣市-</option>
+										<option value="台中市">台中市</option>
+										<option value="彰化市">彰化市</option>
+										<option value="南投市">南投市</option>
+									</select>
+								</div>
+								<div class="input-group my-3">
+									<!-- <label class="input-group-text" for="inputGroupSelect02">
+										<span>鄉鎮區</span> 
+									</label> -->
+									<select class="form-select form-select-lg form-control" id="myareaname"
+										aria-label=".form-select-lg example">
+										<option selected disabled>-選擇鄉鎮區-</option>
+										<option value="1">西屯市</option>
+										<option value="2">南屯區</option>
+										<option value="3">西區</option>
+									</select>
+								</div>
+								<div class="input-group my-3">
+									<!-- <label class="input-group-text" for="inputGroupSelect02">
+										<span>鄉鎮區</span> 
+									</label> -->
+									<select class="form-control" id="myareazip">
+										<option selected disabled>-郵遞區號-</option>
+										<option value="1"></option>
+									</select>
+								</div>
+								<ul class="list-group" id="listData">
+									<li class="list-group-item ">
+										<p class="fs-3 fw-500">XX藥局</p>
+										<p class="fs-5">
+											<i class="fa-solid fa-map-location-dot text-primary me-2"></i>地址：XXXXX
+										</p>
+										<p class="fs-5">
+											<i class="fa-solid fa-phone text-danger me-2"></i>
+											電話：XXXXX
+										</p>
+										<p> <i class="fa-solid fa-head-side-mask text-warning me-2"></i>成人口罩：99個</p>
+										<p> <i class="fa-solid fa-head-side-mask text-warning me-2"></i>兒童口罩：99個</p>
+									</li>
+
+								</ul>
+
+							</div>
+							<div class="col-md-9 bg-info">
+
+								<div class="mt-3">
+									<div class="row">
+										<div class="col  bg-info">
+											<div id="map" class="vh-100 bg-warning"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站中間主頁  結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+					</div>
+					<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  網站中間主頁 main 第一排 分析資訊小方格+業績折線圖 起始 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+					<div class="row" id="Root1" style="display: none;">
+						<div class="col-sm-12 col-lg-6 col-xl-3">
+							<div class="card v-100">
+								<div class="card-body">
+									<div class="row">
+										<div class="col mt-0">
+											<h3 class="card-title">會員總數</h3>
+										</div>
+										<div class="col-auto">
+											<div class="stat fs-1 text-success">
+												<i class="fa-solid fa-users"></i>
+											</div>
+										</div>
+									</div>
+									<h1 class="mt-1 mb-3" id="total_member">xx人</h1>
+
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-lg-6 col-xl-3">
+							<div class="card v-100">
+								<div class="card-body">
+									<div class="row">
+										<div class="col mt-0">
+											<h3 class="card-title">銷售金額</h3>
+										</div>
+
+										<div class="col-auto">
+											<div class="stat text-black fs-1">
+												<i class="fa-solid fa-user-secret"></i>
+											</div>
+										</div>
+									</div>
+									<h1 class="mt-1 mb-3" id="total_money">$ 6500</h1>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-lg-6 col-xl-3">
+							<div class="card v-100">
+								<div class="card-body">
+									<div class="row">
+										<div class="col mt-0">
+											<h3 class="card-title">銷售杯數</h3>
+										</div>
+
+										<div class="col-auto">
+											<div class="stat text-danger fs-1">
+												<i class="fa-solid fa-sack-dollar"></i>
+											</div>
+										</div>
+									</div>
+									<h1 class="mt-1 mb-3" id="total_drink">xxx杯</h1>
+
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-lg-6 col-xl-3">
+							<div class="card v-100">
+								<div class="card-body">
+									<div class="row">
+										<div class="col mt-0">
+											<h3 class="card-title">產品數量</h3>
+										</div>
+										<div class="col-auto">
+											<div class="stat text-primary fs-1">
+												<i class="fa-solid fa-file-invoice-dollar"></i>
+											</div>
+										</div>
+									</div>
+									<h1 class="mt-1 mb-3" id="total_product">XXX種</h1>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑   網站中間主頁 main 第一排 分析資訊小方格 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+
+
+					<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  網站中間主頁 main 第二排 起始  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+					<div class="row" id="Root2" style="display: none;">
+						<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  網站中間主頁 main 第二排 業績長條圖 起始  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+						<!-- <div class="col-12 col-md-6 col-xxl-3 d-flex order-2 order-xxl-3"> -->
+						<div class="col-12 col-md-6 col-xxl-7 d-flex order-1 order-xxl-1">
+							<div class="card flex-fill w-100">
+								<div class="card-header">
+
+									<h5 class="card-title mb-0">產品銷售長條圖</h5>
+								</div>
+								<div class="card-body d-flex w-100">
+									<div class="align-self-center chart chart-lg">
+										<canvas id="myChart"></canvas>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站中間主頁 main 第二排 業績長條圖 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+						<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  網站中間主頁 main 第二排 年月曆 起始  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+						<div class="col-12 col-md-6 col-xxl-5 d-flex order-2 order-xxl-2">
+							<div class="card flex-fill">
+								<div class="card-header">
+									<h5 class="card-title mb-0">萬年曆</h5>
+								</div>
+								<div class="card-body d-flex">
+									<div class="align-self-center w-100">
+										<div class="chart">
+											<div id="datetimepicker-dashboard"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站中間主頁 main 第二排 年月曆 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+					</div>
+					<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站中間主頁 main 第二排 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+
+
+					<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  網站中間主頁 main 第三排  起始  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+					<div class="row" id="Root3" style="display: none;">
+						<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  網站中間主頁 main 第三排 業績折線圖 起始  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+						<!-- <div class="col-xl-6 col-xxl-7"> -->
+						<div class="col-md-6 col-xxl-7">
+							<div class="card flex-fill h-100">
+								<div class="card-header">
+									<h5 class="card-title mb-0">產品銷售曲線圖</h5>
+								</div>
+								<div class="card-body py-3">
+									<div class="chart chart-sm">
+										<canvas id="mychartLine"></canvas>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站中間主頁 main 第三排 業績折線圖 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+						<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  網站中間主頁 main 第三排 業績分類比重圖 起始  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+						<!-- <div class="col-12 col-md-6 col-xxl-3 d-flex order-2 order-xxl-2"> -->
+						<div class="col-md-6 col-xxl-5 d-flex">
+							<div class="card flex-fill h-100">
+								<div class="card-header">
+									<h5 class="card-title mb-0">產品銷售圓餅圖</h5>
+								</div>
+								<div class="card-body d-flex">
+									<div class="align-self-center w-100">
+										<div class="py-3">
+											<div class="chart chart-xs">
+												<canvas id="myChartPie"></canvas>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站中間主頁 main 第二排 業績分類比重圖 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+					</div>
+					<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站中間主頁 main 第三排 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+				</div>
+			</main>
+			<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站中間主頁 main 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+
+
+			<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  網站主頁 footer 起始  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+			<div class="container-fluid">
+				<div class="row border border-light">
+					<div class="col-6">
+						<div class="text-start"><strong> Copyright © 2023 All rights reserved.</strong></div>
+					</div>
+					<div class="col-6">
+						<div class="text-end">Version 1.2</div>
+					</div>
+				</div>
+				<div class="row"><br></div>
+			</div>
+			<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站主頁 footer 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+		</div> <!-- main 結束-->
+	</div> <!-- wrapper 結束-->
+
+	<script src="../js/app.js"></script>
+	<script src="../js/jquery-3.6.1.min.js"></script>
+	<script src="../js/bootstrap.bundle.min.js"></script>
+	<script src="../js/CityCountyData.js"></script>
+	<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+		integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+	<script src="../js/leaflet.markercluster.js"></script>
+
+	<script>
+		var cook01 = getCookie("UID01"), cook02 = getCookie("UID02"), cook03 = getCookie("UID03");
+		var userID;
+		if (cook01 != "" && cook02 != "" && cook03 != "") {
+			var dataJson = {};    //宣告陣列物件
+			dataJson["uid01"] = cook01;
+			dataJson["uid02"] = cook02;
+			dataJson["uid03"] = cook03;
+			$.ajax({
+				type: "POST",
+				url: "../CRUD_HW/Member_UID_api.php",
+				data: JSON.stringify(dataJson),
+				contentType: "appliction/json;chartest=usf-8",   //定義輸出語系,避免亂碼
+				dataType: "json",           //定義接收格式
+				success: showdata_CheckUidOK,
+				error: function () {
+					console.log("error..... CRUD_HW/Member_UID_api.php");
+				}
+			});
+		}
+
+		function showdata_CheckUidOK(data) {
+			if (data.state) {
+				//顯示 會員名稱
+				//隱藏按鈕 (登入,註冊)
+				console.log(data);
+
+				if (data.data[0].Userstate == "y") {
+
+					$("#login_member").text(data.data[0].Username + "會員你好　　");
+
+				} else {
+					alert("帳號停權中...請連絡負責人處理");
+				}
+				if (data.data[0].Userstate == "y" && data.data[0].Usertype == 100) {
+					$("#Rootmember").show();
+					$("#Rootmember2").show();
+					$("#Root1").show();
+					$("#Root2").show();
+					$("#Root3").show();
+					$("#Root0").hide();
+
+				}
+			} else {
+				alert(data.message);
+			}
+		}
+		//from w3school
+		function setCookie(cname, cvalue, exdays) {
+			const d = new Date();
+			d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+			let expires = "expires=" + d.toUTCString();
+			document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+		}
+		function getCookie(cname) {
+			let name = cname + "=";
+			let decodedCookie = decodeURIComponent(document.cookie);
+			let ca = decodedCookie.split(';');
+			for (let i = 0; i < ca.length; i++) {
+				let c = ca[i];
+				while (c.charAt(0) == ' ') {
+					c = c.substring(1);
+				}
+				if (c.indexOf(name) == 0) {
+					return c.substring(name.length, c.length);
+				}
+			}
+			return "";
+		}
+	</script>
+
+	<script>
+		var selectCity; //儲存所選取縣市名稱
+		var selectArea; //儲存所選取鄉鎮區名稱
+		var selectAreaList = []; //儲存所選取縣市的鄉鎮區資料
+		var maskData; //儲存所有的健保局口罩販售統計資料
+		var map;
+		$(function () {
+			//載入健保局口罩販售統計資料
+			$.ajax({
+				type: "GET",
+				url: "../js/points.json",
+				dataType: "json",
+				async: false,
+				success: function (data) {
+					maskData = data.features;
+				},
+				error: function () {
+					alert("error-js/points.json")
+				}
+			});
+
+			// console.log(maskData);
+
+			// console.log(city);
+
+			//渲染縣市選單
+			$("#mycityname").empty();
+			$("#mycityname").append('<option selected disabled>-選擇縣市-</option>');
+			city.forEach(function (item) {
+				// console.log(item.CityName);
+				var strHTML = `<option value="` + item.CityName + `">` + item.CityName + `</option>
+                `
+				$("#mycityname").append(strHTML);
+			});
+
+			//畫地圖-------------------------------------------------------
+			//setView([經度, 緯度], 解析度)
+
+			map = L.map('map').setView([24.171, 120.609], 13);
+
+			L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+			}).addTo(map);
+
+			// L.marker([24.171, 120.609]).addTo(map);
+
+			var strHTML1 = `<div class="card">
+                <div class="card-body">
+                    <img class="card-img-top" src="https://fakeimg.pl/300x200/200">
+                    <div class="fs-3 fw-bolder">勞動部發展署中彰投分屬(台中職訓局)</div>
+                    <div class="fs-4 fw-bolder">電話:0800000000</div>
+                    <div class="fs-4 fw-bolder">地址:地下十八層閻王殿</div>
+                </div>
+            </div>`;
+
+			//marker加入水滴標籤addTo(map)加到地圖上bindPopup(strHTML1)水滴畫面選染
+			//---------------------------------------------------------------
+
+			// L.marker([24.171, 120.609]).addTo(map).bindPopup(strHTML1);
+			//---------------------------------------------------------------
+
+			//***********使用markerClusterGroup*************************************************************************
+
+			var markers = new L.markerClusterGroup().addTo(map);
+
+			//*****************************************************************************************
+
+			//監聽 #mycityname 取得所選取縣市名稱
+			$("#mycityname").change(function () {
+				// console.log($(this).val());
+				selectCity = $(this).val();
+
+				//取得該縣市的 鄉鎮區資料(AreaList)
+				city.find(function (item) {
+					if (item.CityName == selectCity) {
+						selectAreaList = item.AreaList;
+					}
+				});
+
+				// console.log(selectAreaList);
+
+				//渲染鄉鎮區選單
+				$("#myareaname").empty();
+
+				$("#myareaname").append('<option selected disabled>-選擇鄉鎮區-</option>');
+				selectAreaList.forEach(function (item) {
+					// console.log(item.AreaName);
+					var strHTML = `<option value="` + item.AreaName + `">` + item.AreaName + `</option>`;
+					$("#myareaname").append(strHTML);
+				});
+
+			});
+
+			//監聽 #myareaname 取得所選取縣市名稱
+			$("#myareaname").change(function () {
+				// console.log($(this).val());
+				selectArea = $(this).val();
+
+				//取得該縣市的 鄉鎮區資料(AreaList)
+				selectAreaList.find(function (item) {
+					if (item.AreaName == selectArea) {
+						ZipCode = item.ZipCode;
+					}
+				});
+
+				// console.log(ZipCode);
+
+				// 渲染鄉鎮區郵遞區號
+				$("#myareazip").empty();
+
+				var strHTML = `<option value="` + ZipCode + `">` + ZipCode + `</option>
+                `;
+				$("#myareazip").append(strHTML);
+
+				//篩選已決定的鄉鎮區 的藥局
+				var listData = [];//收集篩選後的藥局資料
+
+				maskData.forEach(function (item) {
+					if (item.properties.county == selectCity && item.properties.town == selectArea) {
+						// console.log(item);
+						listData.push(item);
+					}
+				});
+				// console.log(listData);
+				//渲染藥局list-group-------------------------------------------
+				$("#listData").empty();
+				removemarker();
+				listData.forEach(function (item, key) {
+
+					var strHTML = `
+                    <li class="list-group-item " data-name="` + item.properties.name + `" data-address="` + item.properties.address + `" data-phone="` + item.properties.phone + `" data-mask_adult="` + item.properties.mask_adult + `" data-mask_child="` + item.properties.mask_child + `" data-lat="` + item.geometry.coordinates[1] + `" data-lng="` + item.geometry.coordinates[0] + `">
+                        <p class="fs-3 fw-500">`+ item.properties.name + `</p>
+                        <p class="fs-5">
+                            <i class="fa-solid fa-map-location-dot text-primary me-2"></i>地址：`+ item.properties.address + `
+                        </p>
+                        <p class="fs-5">
+                            <i class="fa-solid fa-phone text-danger me-2"></i>
+                            電話：`+ item.properties.phone + `
+                        </p>
+                        <p> <i class="fa-solid fa-head-side-mask text-warning me-2"></i>成人口罩：`+ item.properties.mask_adult + `個</p>
+                        <p> <i class="fa-solid fa-head-side-mask text-warning me-2"></i>兒童口罩：`+ item.properties.mask_child + `個</p>
+                    </li>
+                    `;
+					$("#listData").append(strHTML);
+
+
+					//渲染地圖畫面--------------------------------------------
+
+					// console.log(item.geometry.coordinates[1]);
+					// console.log(item.geometry.coordinates[0]);
+
+					var lat = item.geometry.coordinates[1];
+					var lng = item.geometry.coordinates[0];
+
+					var strHTML1 = `<div class="card">
+                                        <div class="card-header text-bg-primary fs-3 fw-bolder">
+                                            `+ item.properties.name + `
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="fs-4 fw-bolder">電話:`+ item.properties.phone + `</div>
+                                            <div class="fs-4 fw-bolder">地址:`+ item.properties.address + `</div>
+                                            <div class="fs-4 fw-bolder">成人口罩:<span class="text-danger">`+ item.properties.mask_adult + `</span>個</div>
+                                            <div class="fs-4 fw-bolder">兒童口罩:<span class="text-bg-info">`+ item.properties.mask_child + `</span>個</div>
+                                        </div>
+                                    </div>`;
+
+					// L.marker([lat, lng]).addTo(map).bindPopup(strHTML1);
+
+					//*****************群組化水滴在這裡**********************************************************
+
+					markers.addLayer(L.marker([lat, lng]).bindPopup(strHTML1));
+
+					//**********************************************************************************************
+
+					//將地圖移動到第一筆資料
+					// console.log(key);
+
+					if (key == 0) {
+						map.panTo([lat, lng]);
+					} else {
+
+					}
+
+				});
+
+				//hover監聽list-group-item 觸發marker popup 事件
+				$("#listData .list-group-item").hover(function () {
+					// console.log("ok");
+					//印出 隱藏的7個參數
+					// console.log($(this).data("name"));
+					// console.log($(this).data("address"));
+					// console.log($(this).data("phone"));
+					// console.log($(this).data("mask_adult"));
+					// console.log($(this).data("mask_child"));
+					// console.log($(this).data("lat"));
+					// console.log($(this).data("lng"));
+
+					//使用function markerPopup
+					markerPopup($(this).data("name"), $(this).data("address"), $(this).data("phone"), $(this).data("mask_adult"), $(this).data("mask_child"), $(this).data("lat"), $(this).data("lng"));
+
+				});
+
+			});
+
+		});
+
+		//清除"所有"marker的圖層
+		function removemarker() {
+			map.eachLayer(function (layer) {
+				if (layer instanceof L.marker) {
+					map.removeLayer(layer)
+				}
+
+			});
+		}
+
+		//渲染marker跳出介紹
+		function markerPopup(name, address, phone, mask_adult, mask_child, lat, lng) {
+			console.log(name + address + phone + mask_adult + mask_child + lat + lng);
+			var popupHTML = `<div class="card">
+                                        <div class="card-header text-bg-primary fs-3 fw-bolder">
+                                            `+ name + `
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="fs-4 fw-bolder">電話:`+ phone + `</div>
+                                            <div class="fs-4 fw-bolder">地址:`+ address + `</div>
+                                            <div class="fs-4 fw-bolder">成人口罩:<span class="text-danger">`+ mask_adult + `</span>個</div>
+                                            <div class="fs-4 fw-bolder">兒童口罩:<span class="text-info">`+ mask_child + `</span>個</div>
+                                        </div>
+                                    </div>`;
+			L.marker([lat, lng]).bindPopup(popupHTML).openPopup();
+		}
+
+
+	</script>
+
+
+
+	
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			var date = new Date(Date.now() );
+			var defaultDate = date.getUTCFullYear() + "-" + (date.getUTCMonth() + 1) + "-" + date.getUTCDate();
+			document.getElementById("datetimepicker-dashboard").flatpickr({
+				inline: true,
+				prevArrow: "<span title=\"Previous month\">&laquo;</span>",
+				nextArrow: "<span title=\"Next month\">&raquo;</span>",
+				defaultDate: defaultDate
+			});
+		});
+	</script>
+	<script>
+		$(function () {
+			//利用cookie uid 確認登入狀態
+			if (getCookie("UID01") != "" && getCookie("UID02") != "" && getCookie("UID03") != "") {
+				console.log("UID存在");
+				//傳遞至後端驗證UID
+				var jsonData = {};
+				jsonData["uid01"] = getCookie("UID01");
+				jsonData["uid02"] = getCookie("UID02");
+				jsonData["uid03"] = getCookie("UID03");
+				console.log(JSON.stringify(jsonData));
+				$.ajax({
+					type: "POST",
+					url: "../CRUD_HW/Member_UID_api.php",
+					data: JSON.stringify(jsonData),
+					dataType: "json",
+					success: uid_check_showdata,
+					error: function () {
+						alert("error_Member_UID_api.php");
+					}
+				})
+			} else {
+				alert("請先登錄或註冊會員");
+				location.href = "../index.html";
+			}
+		})
+		//確認登入狀態
+		function uid_check_showdata(data) {
+			console.log(data.data[0].Username);
+
+			if (data.state) {
+
+				//UID驗證成功
+				//顯示會員相關訊息
+				if (data.data[0].Userstate == "y") {
+					if (data.data[0].Usertype == 100) {
+						//此帳號為啟用狀態
+						$("#login_member").text(data.data[0].Username + "會員您好!")
+					} else {
+						// alert("帳號權限不足!");
+						// location.href = "../index.html";
+
+					}
+				} else {
+					//此帳號為停權狀態
+					alert("帳號已被停權!");
+					location.href = "../index.html";
+				}
+			} else {
+				//UID驗證失敗 
+				location.href = "../index.html";
+
+			}
+
+		}
+	</script>
+	<script>
+		$(function () {
+			//會員總人數統計
+			$.ajax({
+				type: "GET",
+				url: "count_mem_member_api.php",
+				dataType: "json",
+				success: showdata_total_member,
+				error: function () {
+					alert("error-count_mem_member_api.php");
+				}
+			})
+		})
+		function showdata_total_member(data) {
+			console.log(data);
+			$("#total_member").empty();
+			$("#total_member").text(data.data[0].Username + '人')
+		}
+	</script>
+	<script>
+		$(function () {
+			//總金額數統計
+			$.ajax({
+				type: "GET",
+				url: "count_money_api.php",
+				dataType: "json",
+				success: showdata_total_money,
+				error: function () {
+					alert("error-count_money_api.php");
+				}
+			})
+		})
+		function showdata_total_money(data) {
+			console.log(data);
+			$("#total_money").empty();
+			$("#total_money").text(data.data[0].Money + '元');
+		}
+	</script>
+	<script>
+		$(function () {
+			//總金額數統計
+			$.ajax({
+				type: "GET",
+				url: "count_drink_api.php",
+				dataType: "json",
+				success: showdata_total_drink,
+				error: function () {
+					alert("error-count_drink_api.php");
+				}
+			})
+		})
+		function showdata_total_drink(data) {
+			console.log(data);
+			$("#total_drink").empty();
+			$("#total_drink").text(data.data[0].Pnum + '杯');
+		}
+	</script>
+	<script>
+		$(function () {
+			//總金額數統計
+			$.ajax({
+				type: "GET",
+				url: "count_product_api.php",
+				dataType: "json",
+				success: showdata_total_product,
+				error: function () {
+					alert("error-count_drink_api.php");
+				}
+			})
+		})
+		function showdata_total_product(data) {
+			console.log(data);
+			$("#total_product").empty();
+			$("#total_product").text(data.data[0].Pname + '種');
+		}
+	</script>
+	<script>
+		let mychart;
+		let mychartPie;
+		let mychartLine;
+		$(function () {
+
+			//產品銷售統計圖(折線圖)
+
+			const ctxLine = document.getElementById('mychartLine');
+
+			mychartLine = new Chart(ctxLine, {
+				type: 'line',
+				data: {
+					labels: [],
+					datasets: [{
+						label: '產品銷售總數',
+						data: [],
+						borderWidth: 5,
+						backgroundColor: [
+						    'rgb(255,50,70)',
+						    'rgb(37,155,100)',
+						    'rgb(5,200,20)',
+						    'rgb(55,250,250)',
+						],
+					}]
+				},
+				options: {
+					scales: {
+						y: {
+							beginAtZero: true
+						}
+					}
+				}
+			});
+			//產品銷售統計圖(長條圖)
+
+			const ctx = document.getElementById('myChart');
+
+			mychart = new Chart(ctx, {
+				type: 'bar',
+				data: {
+					labels: [],
+					datasets: [{
+						label: '產品銷售總數',
+						data: [],
+						borderWidth: 5,
+						backgroundColor: [
+							'rgb(255,50,70)',
+							'rgb(37,155,100)',
+							'rgb(5,200,20)',
+							'rgb(55,250,250)',
+						],
+					}]
+				},
+				options: {
+					scales: {
+						y: {
+							beginAtZero: true
+						}
+					}
+				}
+			});
+			//會員居住地分布統計 (圓餅圖)
+
+			const ctxPie = document.getElementById('myChartPie');
+
+			mychartPie = new Chart(ctxPie, {
+				type: 'pie',
+				data: {
+					labels: [],
+					datasets: [{
+						label: '產品總銷售',
+						data: [],
+						borderWidth: 5,
+						backgroundColor: [
+							'rgb(255,50,70)',
+							'rgb(37,155,100)',
+							'rgb(5,200,20)',
+							'rgb(55,250,250)',
+						],
+					}]
+				},
+				options: {
+					responsive: true,
+					plugins: {
+						legend: {
+							position: 'top',
+						},
+						title: {
+							display: true,
+							text: '居住地區人數統計'
+						}
+					}
+				},
+			});
+			$.ajax({
+				type: "GET",
+				url: "count_ordersub_api.php",
+				dataType: "json",
+				success: showdata_count_ordersub,
+				error: function () {
+					alert("error-count_ordersub_api.php");
+				}
+			})
+		})
+		function showdata_count_ordersub(data) {
+			console.log(data);
+			// console.log(data);
+			// console.log(data.data[0].City);
+			// console.log(data.data[0].num);
+			data.data.forEach(function (item) {
+				console.log(item.Pname + item.Pnum);
+				//長條圖渲染
+				mychart.data.labels.push(item.Pname);
+				mychart.data.datasets[0].data.push(item.Pnum);
+				//圓餅圖渲染
+				mychartPie.data.labels.push(item.Pname);
+				mychartPie.data.datasets[0].data.push(item.Pnum);
+				//折線圖渲染
+				mychartLine.data.labels.push(item.Pname);
+				mychartLine.data.datasets[0].data.push(item.Pnum);
+			});
+			mychart.update();
+			mychartPie.update();
+			mychartLine.update();
+		}
+
+
+	</script>
+</body>
+
+</html>

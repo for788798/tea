@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<!-- 網站描述 jccFix 可刪-->
+	<meta name="author" content="AdminKit"> <!-- 作者 jccFix 可刪-->
+	<meta name="keywords"
+		content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+	<!-- 關鍵字 jccFix 上架前必須修改-->
+
+	<link href="../css/app.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+
+	<link rel="stylesheet" href="../css/all.min.css"> <!-- Font Awesome icon CSS 使用 jcc add-->
+	<title>[就找茶]後台管理</title>
+	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  左側 Menu  起始 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+		<nav id="sidebar" class="sidebar js-sidebar">
+			<div class="sidebar-content js-simplebar">
+				<a class="sidebar-brand" href="../index.html">
+					<span class="align-middle fs-2">
+						<i class="fa-solid fa-leaf text-success"></i>&nbsp&nbsp&nbsp&nbsp就找茶&nbsp&nbsp
+						<i class="fa-solid fa-leaf text-success"></i>
+					</span>
+				</a>
+
+				<ul class="sidebar-nav">
+
+					<div id="Rootmember" style="display: none;">
+						<li class="sidebar-header">
+							管理者資料管理
+						</li>
+						<li class="sidebar-item">
+							<a class="sidebar-link" href="index.html">
+								<i class="align-middle" data-feather="sliders"></i> <span
+									class="align-middle">系統資訊儀表板</span>
+							</a>
+						</li>
+					</div>
+
+					<li class="sidebar-header">
+						會員資料管理
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="member.html">
+							<i class="align-middle" data-feather="user"></i> <span class="align-middle">會員基本資料維護</span>
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="memoder.html">
+							<i class="align-middle" data-feather="user-plus"></i> <span
+								class="align-middle">會員訂單查詢</span>
+						</a>
+					</li>
+					<!-- 					<li class="sidebar-item">
+						<a class="sidebar-link" href="pages-sign-in.html">
+							<i class="align-middle" data-feather="log-in"></i> <span class="align-middle">登入</span>
+						</a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="pages-blank.html">
+							<i class="align-middle" data-feather="book"></i> <span class="align-middle">空白</span>
+						</a>
+					</li> -->
+
+					<div id="Rootmember2" style="display: none;">
+						<li class="sidebar-header">
+							茶飲品資料管理
+						</li>
+						<li class="sidebar-item">
+							<a class="sidebar-link" href="ui-myShopProductCRUD.html">
+								<i class="fa-solid fa-mug-hot"></i> <span class="align-middle">茶飲產品資料維護</span>
+							</a>
+						</li>
+						<li class="sidebar-item">
+							<a class="sidebar-link" href="ui-myShopSpecialCRUD.html">
+								<i class="fa-solid fa-mug-saucer"></i></i> <span class="align-middle">茶飲產品分類檔維護</span>
+							</a>
+						</li>
+					</div>
+				</ul>
+
+				<div class="sidebar-cta">
+					<div class="sidebar-cta-content">
+						<strong class="d-inline-block mb-2">連鎖茶店系統</strong>
+						<div class="mb-3 text-sm">
+							你是否正在找 茶飲品訂購 管理系統 , [就找茶] 幫你一切搞定
+						</div>
+						<div class="d-grid">
+							<a href="index.html" class="btn btn-primary">測試版下載</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  左側 Menu 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+
+		<div class="main">
+			<nav class="navbar navbar-expand navbar-light navbar-bg">
+				<a class="sidebar-toggle js-sidebar-toggle">
+					<i class="hamburger align-self-center"></i>
+				</a>
+
+				<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  網站主頁右上角 1.提示 2.對話 3.下拉選單  起始 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+				<div class="navbar-collapse collapse">
+					<ul class="navbar-nav navbar-align">
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
+								<div class="position-relative">
+									<i class="align-middle" data-feather="bell"></i>
+									<span class="indicator">4</span>
+								</div>
+							</a>
+							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
+								aria-labelledby="alertsDropdown">
+								<div class="dropdown-menu-header">
+									4 New Notifications
+								</div>
+								<div class="list-group">
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<i class="text-danger" data-feather="alert-circle"></i>
+											</div>
+											<div class="col-10">
+												<div class="text-dark">Update completed</div>
+												<div class="text-muted small mt-1">Restart server 12 to complete the
+													update.</div>
+												<div class="text-muted small mt-1">30m ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<i class="text-warning" data-feather="bell"></i>
+											</div>
+											<div class="col-10">
+												<div class="text-dark">Lorem ipsum</div>
+												<div class="text-muted small mt-1">Aliquam ex eros, imperdiet vulputate
+													hendrerit et.</div>
+												<div class="text-muted small mt-1">2h ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<i class="text-primary" data-feather="home"></i>
+											</div>
+											<div class="col-10">
+												<div class="text-dark">Login from 192.186.1.8</div>
+												<div class="text-muted small mt-1">5h ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<i class="text-success" data-feather="user-plus"></i>
+											</div>
+											<div class="col-10">
+												<div class="text-dark">New connection</div>
+												<div class="text-muted small mt-1">Christina accepted your request.
+												</div>
+												<div class="text-muted small mt-1">14h ago</div>
+											</div>
+										</div>
+									</a>
+								</div>
+								<div class="dropdown-menu-footer">
+									<a href="#" class="text-muted">Show all notifications</a>
+								</div>
+							</div>
+						</li>
+
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown"
+								data-bs-toggle="dropdown">
+								<div class="position-relative">
+									<i class="align-middle" data-feather="message-square"></i>
+								</div>
+							</a>
+							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
+								aria-labelledby="messagesDropdown">
+								<div class="dropdown-menu-header">
+									<div class="position-relative">
+										4 New Messages
+									</div>
+								</div>
+								<div class="list-group">
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="../img/avatars/avatar-5.jpg"
+													class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">Vanessa Tucker</div>
+												<div class="text-muted small mt-1">Nam pretium turpis et arcu. Duis arcu
+													tortor.</div>
+												<div class="text-muted small mt-1">15m ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="../img/avatars/avatar-2.jpg"
+													class="avatar img-fluid rounded-circle" alt="William Harris">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">William Harris</div>
+												<div class="text-muted small mt-1">Curabitur ligula sapien euismod
+													vitae.</div>
+												<div class="text-muted small mt-1">2h ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="../img/avatars/avatar-4.jpg"
+													class="avatar img-fluid rounded-circle" alt="Christina Mason">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">Christina Mason</div>
+												<div class="text-muted small mt-1">Pellentesque auctor neque nec urna.
+												</div>
+												<div class="text-muted small mt-1">4h ago</div>
+											</div>
+										</div>
+									</a>
+									<a href="#" class="list-group-item">
+										<div class="row g-0 align-items-center">
+											<div class="col-2">
+												<img src="../img/avatars/avatar-3.jpg"
+													class="avatar img-fluid rounded-circle" alt="Sharon Lessman">
+											</div>
+											<div class="col-10 ps-2">
+												<div class="text-dark">Sharon Lessman</div>
+												<div class="text-muted small mt-1">Aenean tellus metus, bibendum sed,
+													posuere ac, mattis non.</div>
+												<div class="text-muted small mt-1">5h ago</div>
+											</div>
+										</div>
+									</a>
+								</div>
+								<div class="dropdown-menu-footer">
+									<a href="#" class="text-muted">Show all messages</a>
+								</div>
+							</div>
+						</li>
+						<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站主頁右上角 4 下拉選單 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+
+						<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  網站主頁右上角 3 下拉選單 起始 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
+								data-bs-toggle="dropdown">
+								<i class="align-middle" data-feather="settings"></i>
+							</a>
+
+							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
+								data-bs-toggle="dropdown">
+								<img src="../img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1"
+									alt="Charles Hall" /> <span class="text-dark" id="login_member">Charles Hall</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-end">
+								<a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1"
+										data-feather="user"></i> Profile</a>
+								<a class="dropdown-item" href="#"><i class="align-middle me-1"
+										data-feather="pie-chart"></i> Analytics</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="index.html"><i class="align-middle me-1"
+										data-feather="settings"></i> Settings & Privacy</a>
+								<a class="dropdown-item" href="#"><i class="align-middle me-1"
+										data-feather="help-circle"></i> Help Center</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#">Log out</a>
+							</div>
+						</li>
+						<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站主頁右上角 3 下拉選單 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+					</ul>
+				</div>
+				<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站主頁右上角 1.提示 2.對話 3.下拉選單 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+			</nav>
+
+
+
+
+			<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  網站中間主頁 main 起始 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+			<main class="content ">
+				<div class="container-fluid p-0">
+					<h1 class="mb-3 text-primary text-start"><strong>會員訂單查詢</strong></h1>
+					<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  網站中間主頁 main 第一排 分析資訊小方格+業績折線圖 起始 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+					<div class="row mt-3" id="app">
+						<div class="col-12 ">
+							<div class="card">
+								<div class="card-header">
+									<ul class="nav nav-tabs">
+										<li class="nav-item" v-on:click="visibility = 'all'">
+											<a class="nav-link" v-bind:class="{'active' : visibility == 'all'} "
+												aria-current="page" href="#">全部</a>
+										</li>
+										<!-- <li class="nav-item" v-on:click="visibility = 'active'">
+											<a class="nav-link" v-bind:class="{'active' : visibility == 'active'}"
+												href="#">進行中</a>
+										</li> -->
+										<li class="nav-item" v-on:click="visibility = 'completed'">
+											<a class="nav-link" v-bind:class="{'active' : visibility == 'completed'}"
+												href="#">已完成</a>
+										</li>
+									</ul>
+								</div>
+
+								<div class="card-body">
+									<div class="form-check">
+										<table class="table">
+											<thead class="table-dark">
+												<tr>
+													<th>訂單號</th>
+													<th>產品名稱</th>
+													<th>單價</th>
+													<th>數量</th>
+													<th>甜度</th>
+													<th>溫度</th>
+													<th>大小</th>
+													<th>總價</th>
+													<th>#</th>
+													<th>編輯</th>
+												</tr>
+												</theader>
+											<tbody>
+												<!-- :key <=v-bind:key 的縮寫 -->
+												<tr v-for="(item,index) in filtertodo" :key="item.id"
+													:class="{ 'table-danger' : item.onStock }">
+													<td width="15%">{{ item.Orderno }}</td>
+													<td width="15%">{{ item.Pname }}</td>
+													<td width="10%">{{ item.Price }}</td>
+													<td width="10%">{{ item.Pnum }}</td>
+													<td width="10%">{{ item.Sweet }}</td>
+													<td width="10%">{{ item.Temp }}</td>
+													<td width="5%">{{ item.Capacity }}</td>
+													<td width="10%">{{ item.Account }}</td>
+													<td width="5%">
+														<input class="form-check-input" style="margin-left: auto;"
+															type="checkbox" value="" id="flexCheckDefault"
+															v-model="item.onStock">
+													</td>
+													<td width="20%">
+														<button class="btn btn-outline-danger w-100 mt-1"
+															@click="removeitem(item)">刪除</button>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="d-block d-flex justify-content-end"><a href=""
+											style="text-decoration: none; " v-on:click="destory">清除勾選訂單</a></div>
+								</div>
+
+								<div class="card-footer">
+									<div class="d-flex mt-1">
+										<div class="fs-6 fw-bolder me-3">還有{{ countactive }}筆未完成結帳</div>
+
+										<div class="fs-6 fw-bolder ms-3">勾選總金額{{ Account }}</div>
+										<button class="btn btn-outline-info ms-auto" id="Pay_ok">訂單結帳</button>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站中間主頁 main 第三排 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+				</div>
+			</main>
+			<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站中間主頁 main 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+			<!-- Modal -->
+
+
+
+
+
+			<!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓  網站主頁 footer 起始  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+			<div class="container-fluid">
+				<div class="row border border-light">
+					<div class="col-6">
+						<div class="text-start"><strong> Copyright © 2023 All rights reserved.</strong></div>
+					</div>
+					<div class="col-6">
+						<div class="text-end">Version 1.2</div>
+					</div>
+				</div>
+				<div class="row"><br></div>
+			</div>
+			<!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑  網站主頁 footer 結束 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
+		</div> <!-- main 結束-->
+	</div> <!-- wrapper 結束-->
+
+
+
+
+	<script src="../js/app.js"></script>
+	<script src="../js/jquery-3.6.1.min.js"></script>
+	<script src="../js/bootstrap.bundle.min.js"></script>
+	<script src="../js/vue.global.js"></script>
+	<script src="../js/axios.min.js"></script>
+	<script src="../js/check_member_state.js"></script>
+
+	<script>
+
+		var cook01 = getCookie("UID01"), cook02 = getCookie("UID02"), cook03 = getCookie("UID03");
+		var keyID, memberID;
+		$(function () {
+			//利用cookie uid 確認登入狀態
+			if (getCookie("UID01") != "" && getCookie("UID02") != "" && getCookie("UID03") != "") {
+				console.log("UID存在");
+				//傳遞至後端驗證UID
+				var jsonData = {};
+				jsonData["uid01"] = getCookie("UID01");
+				jsonData["uid02"] = getCookie("UID02");
+				jsonData["uid03"] = getCookie("UID03");
+				console.log(JSON.stringify(jsonData));
+				$.ajax({
+					type: "POST",
+					url: "../CRUD_HW/Member_UID_api.php",
+					data: JSON.stringify(jsonData),
+					dataType: "json",
+					success: uid_check_showdata,
+					error: function () {
+						alert("error_Member_UID_api.php");
+					}
+				})
+			} else {
+				alert("請先登錄或註冊會員");
+				location.href = "../index.html";
+			}
+		})
+		//確認登入狀態
+		function uid_check_showdata(data) {
+			//console.log(data.data[0].Username);
+			console.log(data.data[0].ID);
+			memberID = data.data[0].ID;
+
+			if (data.state) {
+
+				//UID驗證成功
+				//顯示會員相關訊息
+				if (data.data[0].Userstate == "y") {
+					//此帳號為啟用狀態
+					$("#login_member").text(data.data[0].Username + "會員您好!")
+
+				} else {
+					//此帳號為停權狀態
+					alert("帳號已被停權!");
+					location.href = "../index.html";
+				}
+			} else {
+				//UID驗證失敗 
+				location.href = "../index.html";
+
+			}
+
+		}
+
+
+
+		if (cook01 != "" && cook02 != "" && cook03 != "") {
+			var dataJson = {};    //宣告陣列物件
+			dataJson["uid01"] = cook01;
+			dataJson["uid02"] = cook02;
+			dataJson["uid03"] = cook03;
+			$.ajax({
+				type: "POST",
+				url: "../CRUD_HW/Member_UID_api.php",
+				data: JSON.stringify(dataJson),
+				contentType: "appliction/json;chartest=usf-8",   //定義輸出語系,避免亂碼
+				dataType: "json",           //定義接收格式
+				success: showdata_CheckUidOK,
+				error: function () {
+					console.log("error..... CRUD_HW/Member_UID_api.php")
+				}
+			});
+		}
+
+		function showdata_CheckUidOK(data) {
+			if (data.state) {
+				//顯示 會員名稱
+				//隱藏按鈕 (登入,註冊)
+				// console.log(data);
+
+				if (data.data[0].Userstate == "y") {
+
+					$("#login_member").text(data.data[0].Username + "會員你好　　");
+
+				} else {
+					alert("帳號停權中...請連絡負責人處理");
+				}
+				if (data.data[0].Userstate == "y" && data.data[0].Usertype == 100) {
+					$("#Rootmember").show();
+					$("#Rootmember2").show();
+					$("#Root1").show();
+					$("#Root2").show();
+					$("#Root3").show();
+					$("#Root0").hide();
+
+				}
+			} else {
+				alert(data.message);
+			}
+		}
+		//from w3school
+		function setCookie(cname, cvalue, exdays) {
+			const d = new Date();
+			d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+			let expires = "expires=" + d.toUTCString();
+			document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+		}
+		function getCookie(cname) {
+			let name = cname + "=";
+			let decodedCookie = decodeURIComponent(document.cookie);
+			let ca = decodedCookie.split(';');
+			for (let i = 0; i < ca.length; i++) {
+				let c = ca[i];
+				while (c.charAt(0) == ' ') {
+					c = c.substring(1);
+				}
+				if (c.indexOf(name) == 0) {
+					return c.substring(name.length, c.length);
+				}
+			}
+			return "";
+		}
+
+		const App = {
+			data() {
+				return {
+					visibility: 'all',
+					cacheitem: [],
+					memID: 0,
+					temp: [
+
+					],
+
+
+				}
+			},
+			created() {
+				var vm = this;//vm:virtual manchin
+				
+				// Make a request for a user with a given ID
+				axios.get('../CRUD_HW/OrderOrderSub_R_api.php')
+					.then(function (response) {
+						// handle success
+						console.log(response);
+						vm.cacheitem = response.data.data;
+						keyID = response.data.data[0].ID;
+						vm.memID = response.data.data[0].UserId;
+						
+					})
+					.catch(function (error) {
+						// handle error
+						// console.log(error);
+					})
+					.finally(function () {
+						// always executed
+					});
+			},
+			methods: {
+				removeitem(product) {
+					var vm = this;
+					//newindex新的索引標籤
+					var newindex = vm.cacheitem.findIndex((item, key) => {
+						return product.id == item.id;
+					});
+					// console.log(newindex);
+					//splice剪輯索引標籤1
+					if (confirm("確認刪除 訂單:" + product.Orderno + "?")) {
+
+						var jsonData = {};
+						jsonData["ID"] = product.ID;
+						// console.log(JSON.stringify(jsonData));
+
+						$.ajax({
+							type: "POST",
+							url: "../CRUD_HW/OrderOrderSub_D_api.php",
+							data: JSON.stringify(jsonData),
+							dataType: "json",
+							async: false,
+							success: function showdata(data) {
+								if (data.state) {
+									vm.cacheitem.splice(newindex, 1);
+									alert(data.message);
+								} else {
+									alert(data.message);
+								}
+							},
+							error: function () {
+								alert("error_../CRUD_HW/OrderOrderSub_D_api.php");
+							}
+						});
+					} else {
+						console.log("not ok");
+					}
+				},
+				destory() {
+					this.item.onStock = false;
+				}
+			},
+
+			computed: {
+				filtertodo() {
+					var vm = this;
+					var newcacheitem = [];
+					if (vm.visibility == 'all') {
+						vm.cacheitem.forEach(function (item, key) {
+							if (item.UserId == vm.memID) {
+
+								newcacheitem.push(item);
+							}
+						})
+						return newcacheitem;
+					} else if (vm.visibility == 'active') {
+						//將未完成的資料蒐集回傳
+						var activetodo = [];
+						vm.cacheitem.forEach(function (item, key) {
+							if (!item.completed) {
+								activetodo.push(item);
+							}
+						});
+						return activetodo;
+					} else {
+						var completedtodo = [];
+						vm.cacheitem.forEach(function (item, key) {
+							if (item.completed) {
+								completedtodo.push(item);
+							}
+						});
+						return completedtodo;
+					}
+				},
+				countactive() {
+					var vm = this;
+					var active = 0;
+					vm.cacheitem.forEach(function (item, key) {
+						if (!item.completed) {
+							active++;
+						}
+
+					})
+					return active;
+				},
+				Account() {
+					var vm = this;
+					var tol = 0;
+
+					vm.cacheitem.forEach(function (item, key) {
+						if (item.onStock) {
+							tol = tol + item.Account * 1;
+						}
+					})
+
+					return tol;
+				},
+
+			},
+		};
+
+		Vue.createApp(App).mount("#app");
+
+
+		$(function () {
+			$("#Pay_ok").bind("click", function () {
+
+				if (confirm("確認前往結帳?")) {
+
+					location.href = "../CRUD_HW/progessv2.html?id=" + memberID;
+
+				}
+
+			});
+
+		});
+	</script>
+
+
+</body>
+
+</html>
