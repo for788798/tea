@@ -2,7 +2,7 @@
 <ul>
 <h1>專案內容</h1>
 <li>
-<h3>連鎖飲料購物官網</h3>
+<h3>連鎖飲料購物官網</h3><a href="https://dailyline.000webhostapp.com/file02/Tea">官網首頁</a>  
 </li>
 <li>
 <h3>後臺系統</h3>
